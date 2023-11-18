@@ -15,6 +15,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_18_175313) do
   enable_extension "plpgsql"
 
   create_table "orders", force: :cascade do |t|
+    t.string "order_items"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,6 +33,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_18_175313) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
+    t.string "username"
+    t.string "password_digest"
+    t.string "password_confirmation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
