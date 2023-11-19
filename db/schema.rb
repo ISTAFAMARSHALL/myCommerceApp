@@ -34,6 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_18_175313) do
     t.string "name"
     t.string "email"
     t.string "username"
+    t.string "image"
     t.string "password_digest"
     t.string "password_confirmation"
     t.datetime "created_at", null: false

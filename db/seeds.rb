@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+# Create Users
+10.times do |index|
+
+    imageUrl = 'https://xsgames.co/randomusers/avatar.php?g=male';
+    
+    name = "Anthony";
+    username = "admin#{index + 1}";
+    email = "admin#{index + 1}@mycommerce.com";
+    password = "admin#{index + 1}";
+    image = imageUrl
+
+    User.create!(email: email, image: image, password: password, password_confirmation: password, username: username, name: name)
+
+end

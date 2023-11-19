@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   resources :products
   resources :users
   resources :orders
+
+  get "/me", to: "users#me"
+  post "/login", to: "sessions#create"
+  delete "/logout", to: "sessions#destroy"
   
 end
