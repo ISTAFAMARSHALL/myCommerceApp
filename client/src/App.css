@@ -1,4 +1,77 @@
-.App {
+
+
+/* Reset some default styles */
+body,
+h1,
+h2,
+h3,
+p,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+header {
+  background-color: #003366;
+  color: #fff;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 20px;
+}
+
+main {
+  padding: 20px 0;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-card h2 {
+  color: #333;
+}
+
+.product-card p {
+  color: #777;
+}
+
+footer {
+  background-color: #003366;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -35,4 +108,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
