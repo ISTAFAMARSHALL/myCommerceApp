@@ -1,6 +1,8 @@
 class ProductsController < ApplicationController
 
-    before_action :set_api_key
+  skip_before_action :authorize
+
+  before_action :set_api_key
 
   def index
     @products = fetch_products(params[:category])
