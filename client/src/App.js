@@ -20,10 +20,13 @@ function App() {
   }, [setCurrentUser]);
 
   return (
-    <div className="App">
+    <div className="App" >
       <header className="App-header">
         <h1>SmartBuy</h1>
         <img src={logo} className="App-logo" alt="logo" />
+
+      </header>
+      <div className="container" >
         {loggedIn ? (
           <>
             <p>Welcome {currentUser.username}</p>
@@ -35,7 +38,7 @@ function App() {
             <button onClick={() => setLoggedIn(true)}>Login</button>
           </>
         )}
-      </header>
+      </div>
     </div>
   );
 }
