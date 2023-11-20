@@ -16,11 +16,12 @@ class ProductsController < ApplicationController
   end
 
   def fetch_products(category = nil)
-    base_url = 'https://api.bestbuy.com/v1/products'
+    base_url = 'https://api.bestbuy.com/v1/products(onSale=true)'
     api_params = {
       apiKey: @api_key,
       format: 'json',
-      show: 'sku,name,salePrice'
+      pageSize: '100',
+      show: 'sku,name,salePrice,image'
       # Add more parameters as needed, e.g., categoryPath.name, etc.
     }
 

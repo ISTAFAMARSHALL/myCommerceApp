@@ -21,7 +21,7 @@ const ProductList = ({  }) => {
         }});
     }, []);
     
-    console.log(products)
+    console.log(products.products)
 
   return (
     <div className="product-list">
