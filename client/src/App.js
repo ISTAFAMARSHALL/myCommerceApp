@@ -6,12 +6,15 @@ import { UserContext } from "./context/user";
 import LoginForm from "./pages/LoginForm";
 import ProductList from './pages/ProductList';
 import ProductDetails from './pages/ProductDetails';
+import Account from './pages/Account';
 
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const {currentUser, setCurrentUser} = useContext(UserContext);
   const [items, setItems] = useState([]);
+
+  console.log(currentUser);
 
   // useEffect(() => {
   //   fetch("/me").then((response) => {
@@ -71,10 +74,8 @@ function App() {
         <Switch>
 
           <Route path="/" exact 
-          // component={ProductList} 
-          >
-            <ProductList setItems={setItems}/>
-          </Route>
+          component={ProductList} 
+          />
           
           <Route path="/product/:id" 
           component={ProductDetails} 
@@ -83,9 +84,9 @@ function App() {
           <Route path="/cart" 
           // component={Cart} 
           />
-          <Route path="/account" 
-          // component={Account} 
-          />
+
+          <Route path="/account" render={() => <Account currentUser={currentUser} />} />
+
 
         </Switch>
       </div>

@@ -42,41 +42,6 @@ class ProductsController < ApplicationController
     []
   end
 
-
-
-  # def fetch_all_products(category = nil)
-  #   base_url = 'https://api.bestbuy.com/v1/products'
-  #   api_params = {
-  #     apiKey: @api_key,
-  #     format: 'json',
-  #     show: 'sku,name,salePrice,image',
-  #     pageSize: 100,  # Adjust as needed, up to 100 items per page
-  #   }
-
-  #   # Add category parameter if provided
-  #   api_params[:categoryPath.name] = category if category
-
-  #   all_products = []
-
-  #   # Fetch products until all pages are retrieved
-  #   page = 1
-  #   10.times do 
-  #     api_params[:page] = page
-  #     response = RestClient.get(base_url, params: api_params)
-
-  #     products = JSON.parse(response.body)['products']
-  #     # break if products.nil? || products.empty?
-
-  #     all_products.concat(products)
-  #     page += 1
-
-  #     # Introduce a delay of 1 second between requests
-  #   sleep(1)
-  #   end
-
-  #   all_products
-
-
   def fetch_products(category = nil)
     sleep(1)
       base_url = 'https://api.bestbuy.com/v1/products'
