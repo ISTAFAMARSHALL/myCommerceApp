@@ -81,7 +81,7 @@ header {
   align-items: center;
 }
 
-nav {
+/* nav {
   display: flex;
   align-items: center;
 }
@@ -90,7 +90,50 @@ nav a {
   color: #fff;
   text-decoration: none;
   margin-right: 20px;
+} */
+
+#navbar {
+  display: flex;
+  flex-wrap: wrap;
+  float: left;
+  justify-content: space-around;
+  align-items: flex-start;
+  background-color: #333; /* Change the background color as needed */
+  padding: 20px;
+  width: 200px; /* Set the initial width of the column */
+  transition: width 0.3s ease; /* Add a smooth transition effect */
 }
+
+.selection {
+  color: white;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.button {
+  margin-bottom: 20px;
+}
+
+#toggleButton {
+  
+  background-color: #333; /* Change the background color as needed */
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+/* Hide the navbar column by default */
+#navbar.hidden {
+  width: 0;
+}
+
+/* Style the toggle button */
+#toggleButton:hover {
+  background-color: #555; /* Change the background color on hover */
+}
+
+
 
 main {
   padding: 20px 0;

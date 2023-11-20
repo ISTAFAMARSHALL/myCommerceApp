@@ -1,10 +1,12 @@
 import React from 'react';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { UserContext } from '../context/user';
 
-function Navbar({ setLoggedIn, staffButton, studentButton }) {
+function Navbar({ setLoggedIn, loggedIn }) {
   const { currentUser, setCurrentUser } = useContext(UserContext);
+  const [navbarVisible, setNavbarVisible] = useState(true);
+  const [userSelection, setUserSelection] = useState('');
 
   function handleLogOut() {
     fetch('/logout', { method: 'DELETE' });
@@ -12,20 +14,33 @@ function Navbar({ setLoggedIn, staffButton, studentButton }) {
     setLoggedIn(false);
   }
 
+  const handleUserSelection = (selection) => {
+    setUserSelection(selection);
+  };
+
   return (
-    <div id="navbar">
+    <div id="navbar" className={navbarVisible ? '' : 'hidden'}>
+
+    {/* <div className="selection">{userSelection}</div>
+      <button
+        id="toggleButton"
+        onClick={() => setNavbarVisible(!navbarVisible)}
+      >
+        Toggle Navbar
+      </button> */}
+
 
         {/* NavLink elements for Best Buy logo and Home page */}
-      <NavLink className="button" exact to="/">
-        <button>Home</button>
-      </NavLink>
+        <NavLink className="button" exact to="/">
+            <button>Home</button>
+        </NavLink>
 
-      <NavLink className="button" exact to="/account">
-        <button>My Account</button>
-      </NavLink>
+        <NavLink className="button" exact to="/account">
+            <button>My Account</button>
+        </NavLink>
 
         <NavLink className="button" exact to="/cart">
-        <button>Cart</button>
+            <button>Cart</button>
         </NavLink>
 
         {/* NavLink elements for Best Buy categories */}

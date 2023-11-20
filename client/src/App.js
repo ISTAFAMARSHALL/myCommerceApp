@@ -7,6 +7,7 @@ import LoginForm from "./pages/LoginForm";
 import ProductList from './pages/ProductList';
 import ProductDetails from './pages/ProductDetails';
 import Account from './pages/Account';
+import NavBar from './components/NavBar';
 
 function App() {
 
@@ -28,11 +29,25 @@ function App() {
   //   });
   // }, [setCurrentUser]);
 
+
+  const [userSelection, setUserSelection] = useState(false);
+
   return (
     <div className="App" >
       <header className="App-header">
         <h1>SmartBuy</h1>
+
+        
         <img src={logo} className="App-logo" alt="logo" />
+
+        <br></br>
+        <button
+        id="toggleButton"
+        onClick={() => setUserSelection(!userSelection)}
+      >
+        Toggle Navbar
+      </button>
+        
 
         {loggedIn ? (
           <>
@@ -70,6 +85,9 @@ function App() {
       </header>
 
       <div className="container" >
+
+        {userSelection ? (<NavBar></NavBar>) : ("")}
+        
         
         <Switch>
 
