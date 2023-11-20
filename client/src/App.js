@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import { Switch, Route } from "react-router-dom";
 import { UserContext } from "./context/user";
 import LoginForm from "./pages/LoginForm";
+import ProductList from './pages/ProductList';
 
 function App() {
 
@@ -62,9 +63,9 @@ function App() {
         )}
 
       </header>
-      
+
       <div className="container" >
-        
+        <ProductList /> 
       </div>
     </div>
   );
