@@ -5,13 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter as Router} from 'react-router-dom'
 import { UserProvider } from "./context/user";
+import { ItemProvider } from "./context/item";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
     <React.StrictMode>
       <UserProvider >
-        <App />
+        <ItemProvider>
+          <App />
+        </ItemProvider>
       </UserProvider>
     </React.StrictMode>
   </Router>

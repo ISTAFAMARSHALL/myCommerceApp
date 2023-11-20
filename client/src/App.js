@@ -5,11 +5,13 @@ import { Switch, Route } from "react-router-dom";
 import { UserContext } from "./context/user";
 import LoginForm from "./pages/LoginForm";
 import ProductList from './pages/ProductList';
+import ProductDetails from './pages/ProductDetails';
 
 function App() {
 
   const [loggedIn, setLoggedIn] = useState(false);
   const {currentUser, setCurrentUser} = useContext(UserContext);
+  const [items, setItems] = useState([]);
 
   // useEffect(() => {
   //   fetch("/me").then((response) => {
@@ -65,7 +67,27 @@ function App() {
       </header>
 
       <div className="container" >
-        <ProductList /> 
+        
+        <Switch>
+
+          <Route path="/" exact 
+          // component={ProductList} 
+          >
+            <ProductList setItems={setItems}/>
+          </Route>
+          
+          <Route path="/product/:id" 
+          component={ProductDetails} 
+          />
+
+          <Route path="/cart" 
+          // component={Cart} 
+          />
+          <Route path="/account" 
+          // component={Account} 
+          />
+
+        </Switch>
       </div>
     </div>
   );

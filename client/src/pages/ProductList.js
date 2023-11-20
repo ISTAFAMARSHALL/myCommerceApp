@@ -1,13 +1,14 @@
 import React from 'react'
-import { useEffect , useState} from "react";
+import { useEffect , useState, useContext} from "react";
+import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-
-const ProductList = ({  }) => {
+const ProductList = ({ setItems }) => {
 
     const [errors, setErrors] = useState([]);
 
     const [products, setProducts] = useState([]);
-
+    const history = useHistory()
 
     useEffect(() => {
         fetch("/products")
@@ -21,13 +22,14 @@ const ProductList = ({  }) => {
         }});
     }, []);
     
-    console.log(products.products)
-
+    
   return (
     <div className="product-list">
       {products.products?.map((product) => (
-        <div key={product.sku} className="product-card">
+        <div key={product.sku} className="product-card"  >
+          <NavLink to={`/product/${product.sku}`}  >
           <img src={product.image} alt={product.name} className="product-image" />
+          </NavLink>
           <div className="product-details">
             <h3 className="product-name">{product.name}</h3>
             <p className="product-price">${product.salePrice}</p>
