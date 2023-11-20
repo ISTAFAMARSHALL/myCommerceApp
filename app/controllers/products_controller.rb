@@ -15,12 +15,15 @@ class ProductsController < ApplicationController
     @api_key = 'pF95ksO2AJ45DOumUGSfHKsl'  # Replace YOUR_BESTBUY_API_KEY with your actual BestBuy API key
   end
 
+
+
   def fetch_products(category = nil)
-    base_url = 'https://api.bestbuy.com/v1/products(onSale=true)'
-    api_params = {
+      base_url = 'https://api.bestbuy.com/v1/products'
+      api_params = {
       apiKey: @api_key,
+      pageSize: 100,
+      page: 1,
       format: 'json',
-      pageSize: '100',
       show: 'sku,name,salePrice,image'
       # Add more parameters as needed, e.g., categoryPath.name, etc.
     }
@@ -33,6 +36,7 @@ class ProductsController < ApplicationController
 
     # Parse and return the JSON response
     JSON.parse(response.body)
+
   rescue RestClient::ExceptionWithResponse => e
     # Handle API request errors
     Rails.logger.error("BestBuy API request failed: #{e.response}")
