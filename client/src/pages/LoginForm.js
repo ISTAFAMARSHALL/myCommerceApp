@@ -26,8 +26,8 @@ function LoginForm({ setLoggedIn }) {
 
     setCurrentUser(user)
     console.log(user)
-
-    // setLoggedIn(true)
+    setLoggedIn(true)
+    
     // history.push("/")
 
     
