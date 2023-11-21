@@ -6,6 +6,7 @@ import { UserContext } from "./context/user";
 import LoginForm from "./pages/LoginForm";
 import ProductList from './pages/ProductList';
 import ProductDetails from './pages/ProductDetails';
+import ProductCategory from './pages/ProductCategory';
 import Account from './pages/Account';
 import NavBar from './components/NavBar';
 
@@ -61,6 +62,10 @@ function App() {
 
               <Route path="/product/:id" 
               // component={ProductDetail} 
+              />
+
+              <Route path="/product/:category" 
+              component={ProductCategory} 
               />
               
               <Route path="/cart" 

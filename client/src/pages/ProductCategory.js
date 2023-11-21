@@ -1,11 +1,12 @@
 import React from 'react'
 import { useEffect , useState, useContext} from "react";
 import { NavLink } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useHistory , useParams} from "react-router-dom";
 
 const ProductList = ({ setItems }) => {
 
     const [errors, setErrors] = useState([]);
+    const { category } = useParams();
 
     const [products, setProducts] = useState([]);
     const history = useHistory()
@@ -25,7 +26,7 @@ const ProductList = ({ setItems }) => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch(`/products/`);
+          const response = await fetch(`/products/${category}`);
           if (response.ok) {
             const data = await response.json();
             setProducts(data);
@@ -42,7 +43,8 @@ const ProductList = ({ setItems }) => {
       
     }, []);
     
-    
+      console.log(category)
+
   return (
     <div className="product-list">
       {products.products?.map((product) => (

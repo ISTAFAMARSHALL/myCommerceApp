@@ -31,102 +31,99 @@ function Navbar({ setLoggedIn, loggedIn }) {
 
 
         {/* NavLink elements for Best Buy logo and Home page */}
+       <h5>
         <NavLink className="button" exact to="/">
-            <button>Home</button>
+            <>Home</>
         </NavLink>
-
+        
         <NavLink className="button" exact to="/account">
-            <button>My Account</button>
+            <>My Account</>
         </NavLink>
 
         <NavLink className="button" exact to="/cart">
-            <button>Cart</button>
+            <>Cart</>
         </NavLink>
-
+        </h5>
         {/* NavLink elements for Best Buy categories */}
-      <NavLink className="button" exact to="/laptops-computers">
-        <button>Laptops & Computers</button>
+      <NavLink className="button" to="/product/laptops">
+        <>Laptops & Computers</>
       </NavLink>
 
-      <NavLink className="button" exact to="/tvs-projectors">
-        <button>TVs & Projectors</button>
+      <NavLink className="button" to="/product/tvs">
+        <>TVs & Projectors</>
       </NavLink>
 
-      <NavLink className="button" exact to="/video-games-collectibles">
-        <button>Video Games, VR & Collectibles</button>
+      <NavLink className="button" exact to="/product/games">
+        <>Video Games, VR & Collectibles</>
       </NavLink>
 
-      <NavLink className="button" exact to="/major-appliances">
-        <button>Major Appliances</button>
+      <NavLink className="button" exact to="/product/appliances">
+        <>Major Appliances</>
       </NavLink>
 
       {/* Add more NavLink elements for other categories */}
       
-      <NavLink className="button" exact to="/apple">
-        <button>Apple</button>
+      <NavLink className="button" exact to="/product/apple">
+        <>Apple</>
       </NavLink>
 
-      <NavLink className="button" exact to="/cell-phones-accessories">
-        <button>Cell Phones & Accessories</button>
+      <NavLink className="button" exact to="/product/cell">
+        <>Cell Phones & Accessories</>
       </NavLink>
 
-      <NavLink className="button" exact to="/headphones">
-        <button>Headphones</button>
+      <NavLink className="button" exact to="/product/headphones">
+        <>Headphones</>
       </NavLink>
 
-      <NavLink className="button" exact to="/pc-gaming">
-        <button>PC Gaming</button>
+      <NavLink className="button" exact to="/product/pc">
+        <>PC Gaming</>
       </NavLink>
 
-      <NavLink className="button" exact to="/tablets-e-readers">
-        <button>Tablets & E-Readers</button>
+      <NavLink className="button" exact to="/product/tablets">
+        <>Tablets & E-Readers</>
       </NavLink>
 
-      <NavLink className="button" exact to="/sound-bars-audio">
-        <button>Sound Bars, Bluetooth Speakers & Home Audio</button>
+      <NavLink className="button" exact to="/product/soundbars">
+        <>Sound Bars, Bluetooth Speakers & Home Audio</>
       </NavLink>
 
-      <NavLink className="button" exact to="/cameras-drones">
-        <button>Cameras, Camcorders & Drones</button>
+      <NavLink className="button" exact to="/product/cameras">
+        <>Cameras, Camcorders & Drones</>
       </NavLink>
 
-      <NavLink className="button" exact to="/wearable-technology">
-        <button>Wearable Technology</button>
+      <NavLink className="button" exact to="/product/wearable">
+        <>Wearable Technology</>
       </NavLink>
 
-      <NavLink className="button" exact to="/small-appliances">
-        <button>Small Appliances, Floor Care & Home Air Quality</button>
+      <NavLink className="button" exact to="/product/home">
+        <>Small Appliances, Floor Care & Home Air Quality</>
       </NavLink>
 
-      <NavLink className="button" exact to="/smart-home-security">
-        <button>Smart Home, Security & Wi-Fi</button>
+      <NavLink className="button" exact to="/product/smart">
+        <>Smart Home, Security & Wi-Fi</>
       </NavLink>
 
-      <NavLink className="button" exact to="/printers-accessories">
-        <button>Printers & Computer Accessories</button>
+      <NavLink className="button" exact to="/product/printers">
+        <>Printers & Computer Accessories</>
       </NavLink>
 
-      <NavLink className="button" exact to="/electric-transportation">
-        <button>Electric Transportation</button>
+      <NavLink className="button" exact to="/product/transportation">
+        <>Electric Transportation</>
       </NavLink>
 
-      <NavLink className="button" exact to="/collectibles-toys">
-        <button>Collectibles & Toys</button>
-      </NavLink>
-
-      <NavLink className="button" exact to="/exclusive-member-deals">
-        <button>Exclusive Member Deals</button>
+      <NavLink className="button" exact to="/product/collectibles">
+        <>Collectibles & Toys</>
       </NavLink>
 
       <NavLink className="button" exact to="/logout">
-        <button
+        <div
           onClick={() => {
             setLoggedIn(false);
             handleLogOut();
           }}
         >
           Logout
-        </button>
+        </div>
       </NavLink>
     </div>
   );

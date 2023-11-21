@@ -95,32 +95,36 @@ nav a {
 #navbar {
   display: flex;
   flex-wrap: wrap;
-  float: left;
+  float:left;
   justify-content: space-around;
-  align-items: flex-start;
-  background-color: #333; /* Change the background color as needed */
+  background-color: #0072ce; /* Best Buy blue color */
   padding: 20px;
   width: 200px; /* Set the initial width of the column */
-  transition: width 0.3s ease; /* Add a smooth transition effect */
-}
-
-.selection {
   color: white;
-  font-size: 16px;
-  margin-bottom: 20px;
 }
 
 .button {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  background-color: #005ea2; /* Darker shade of blue for buttons */
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-#toggleButton {
-  
-  background-color: #333; /* Change the background color as needed */
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
+.button:hover {
+  background-color: #00467f; /* Darker shade on hover */
+}
+
+#logoutButton {
+  background-color: #e31111; /* Red color for logout button */
+}
+
+#logoutButton:hover {
+  background-color: #a00; /* Darker shade on hover */
 }
 
 /* Hide the navbar column by default */
@@ -129,11 +133,26 @@ nav a {
 }
 
 /* Style the toggle button */
-#toggleButton:hover {
-  background-color: #555; /* Change the background color on hover */
+#toggleButton {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #00467f; /* Darker shade of blue for toggle button */
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
 }
 
+#toggleButton:hover {
+  background-color: #003366; /* Darker shade on hover */
+}
 
+h5 {
+  padding: auto;
+  margin: auto;
+  margin-bottom: 50px;
+}
 
 main {
   padding: 20px 0;
@@ -144,4 +163,24 @@ footer {
   color: #fff;
   padding: 10px 0;
   text-align: center;
+}
+
+.account {
+  background-color: #f8f8f8; /* Light background color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Light box shadow */
+  margin: 20px;
+}
+
+.account h2 {
+  color: #0072ce; /* Best Buy blue color */
+}
+
+.account p {
+  margin-bottom: 10px;
+}
+
+.account strong {
+  font-weight: bold;
 }

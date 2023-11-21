@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :products
   resources :users
   resources :orders
+  resources :categories
 
+  get "/products/:category", to: "products#category"
   get "/me", to: "users#me"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

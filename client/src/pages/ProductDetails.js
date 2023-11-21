@@ -26,7 +26,7 @@ const ProductDetails = () => {
     if (id) {
       fetchData();
     }
-
+    
   }, [id]);
 
   if (!id) {

@@ -2,12 +2,13 @@ import React from 'react';
 
 const Account = ({ currentUser }) => {
 
-    console.log(currentUser);
+    
+    const user = currentUser.length === 0 ? "no user" : "user";
 
   return (
     <div className="account">
       
-      {currentUser.length ? (
+      { user === "user" ? (
         <>
             <h2>Your Account Info</h2>
             <p>
@@ -25,30 +26,4 @@ const Account = ({ currentUser }) => {
   );
 };
 
-export default Account;
-
-// import React from 'react';
-
-// const Account = ({ currentUser }) => {
-//     console.log(currentUser);
-//   return (
-//     <div className="account">
-//       <h2>Your Account</h2>
-//       {currentUser ? (
-//         <>
-//           <p>
-//             <strong>Username:</strong> {currentUser.username}
-//           </p>
-//           <p>
-//             <strong>Email:</strong> {currentUser.email}
-//           </p>
-//           {/* Add more user information here */}
-//         </>
-//       ) : (
-//         <p>Please log in to view your account information.</p>
-//       )}
-//     </div>
-//   );
-// };
-
-// export default Account;
+export default Account
