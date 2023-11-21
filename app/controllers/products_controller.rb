@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
   
   def fetch_products_by_category(category)
     puts "Fetching products for #{category} page"
-    base_url = "https://api.bestbuy.com/v1/products(categoryPath.name=#{params[:id]})?apiKey=#{@api_key}&pageSize=100&format=json"
+    base_url = "https://api.bestbuy.com/v1/products(categoryPath.name=#{params[:id]}*)?apiKey=#{@api_key}&pageSize=100&format=json"
     make_api_request(base_url)
   end
   
