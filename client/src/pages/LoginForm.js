@@ -41,7 +41,7 @@ function LoginForm({ setLoggedIn }) {
     <form onSubmit={handleLogin}>
 
       <div > 
-        <label>Username</label>
+        <label>Username  </label>
         <input
           type="text"
           id="email"
@@ -52,7 +52,7 @@ function LoginForm({ setLoggedIn }) {
       </div>
 
       <div>
-        <label>Password</label>
+        <label>Password  </label>
         <input
           type="password"
           id="password"
