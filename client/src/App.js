@@ -36,18 +36,21 @@ function App() {
   return (
     <div className="App" >
       <header className="App-header">
-        <h1>SmartBuy</h1>
-
-        
-        <img src={logo} className="App-logo" alt="logo" />
-
+        <h1>
+          <>SmartBuy</>
         <br></br>
         <button
         id="toggleButton"
         onClick={() => setUserSelection(!userSelection)}
       >
-        Toggle Navbar
+        Menu
       </button>
+        </h1>
+
+        
+        <img src={logo} className="App-logo" alt="logo" />
+
+        <br></br>
         
 
         {loggedIn ? (

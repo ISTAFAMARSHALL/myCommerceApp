@@ -31,19 +31,21 @@ function Navbar({ setLoggedIn, loggedIn }) {
 
 
         {/* NavLink elements for Best Buy logo and Home page */}
-       <h5>
+       <div id='navtop'>
         <NavLink className="button" exact to="/">
-            <>Home</>
+            Home
         </NavLink>
-        
+        <br></br>
+        <br></br>
         <NavLink className="button" exact to="/account">
-            <>My Account</>
+            My Account
         </NavLink>
-
+        <br></br> 
+        <br></br>
         <NavLink className="button" exact to="/cart">
             <>Cart</>
         </NavLink>
-        </h5>
+        </div>
         {/* NavLink elements for Best Buy categories */}
       <NavLink className="button" to="/product/laptops">
         <>Laptops & Computers</>
@@ -116,7 +118,7 @@ function Navbar({ setLoggedIn, loggedIn }) {
       </NavLink>
 
       <NavLink className="button" exact to="/logout">
-        <div
+        <div id='logout'
           onClick={() => {
             setLoggedIn(false);
             handleLogOut();
