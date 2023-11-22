@@ -25,7 +25,7 @@ function LoginForm({ setLoggedIn }) {
     response.json().then((user) => {
 
     setCurrentUser(user)
-    console.log(user)
+    
     setLoggedIn(true)
     
     // history.push("/")
@@ -38,9 +38,9 @@ function LoginForm({ setLoggedIn }) {
   }
 
   return (
-    <form onSubmit={handleLogin}>
+    <form id="login" onSubmit={handleLogin}>
 
-      <div > 
+      <div id="username" > 
         <label>Username  </label>
         <input
           type="text"

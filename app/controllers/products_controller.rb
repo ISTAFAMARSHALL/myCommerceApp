@@ -41,13 +41,13 @@ class ProductsController < ApplicationController
   
   def fetch_product_by_sku(sku)
     puts "Fetching product with SKU #{params[:id]}"
-    base_url = "https://api.bestbuy.com/v1/products(sku=#{params[:id]})?apiKey=#{@api_key}&format=json"
+    base_url = "https://api.bestbuy.com/v1/products(sku=#{params[:id]})?apiKey=#{@api_key}&sort=regularPrice.desc&format=json"
     make_api_request(base_url)
   end
   
   def fetch_products_by_category(category)
     puts "Fetching products for #{category} page"
-    base_url = "https://api.bestbuy.com/v1/products(categoryPath.name=#{params[:id]}*)?apiKey=#{@api_key}&pageSize=100&format=json"
+    base_url = "https://api.bestbuy.com/v1/products(categoryPath.name=#{params[:id]}*)?apiKey=#{@api_key}&sort=regularPrice&pageSize=100&format=json"
     make_api_request(base_url)
   end
   

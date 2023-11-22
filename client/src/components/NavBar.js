@@ -47,7 +47,11 @@ function Navbar({ setLoggedIn, loggedIn }) {
         </>
       ) : (
         <>
-
+        <NavLink className="button" exact to="/account">
+            Sign Up
+        </NavLink>
+        <br></br> 
+        <br></br>
         </>
       )}
 

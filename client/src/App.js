@@ -82,7 +82,7 @@ function App() {
           <Route path="/" exact component={ProductList} />
           <Route path="/product/:id" component={ProductDetails} />
           <Route path="/cart" />
-          <Route path="/account" render={() => <Account currentUser={currentUser} />} />
+          <Route path="/account" render={() => <Account setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
         </Switch>
       </div>
     </div>

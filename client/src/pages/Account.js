@@ -1,7 +1,11 @@
 import React from 'react';
+import { useContext } from 'react';
+import { UserContext } from '../context/user';
+import SignUpForm from '../components/SignUpForm';
 
-const Account = ({ currentUser }) => {
+const Account = ({ setLoggedIn, loggedIn }) => {
 
+  const { currentUser, setCurrentUser } = useContext(UserContext);
     
     const user = currentUser.length === 0 ? "no user" : "user";
 
@@ -20,7 +24,10 @@ const Account = ({ currentUser }) => {
           {/* Add more user information here */}
         </>
       ) : (
-        <p>Please log in to view your account information.</p>
+        <>
+        {/* <p>Please log in to view your account information.</p> */}
+        <SignUpForm setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
+        </>
       )}
     </div>
   );
