@@ -37,11 +37,20 @@ function Navbar({ setLoggedIn, loggedIn }) {
         </NavLink>
         <br></br>
         <br></br>
+        {loggedIn ? (
+        <>
         <NavLink className="button" exact to="/account">
             My Account
         </NavLink>
         <br></br> 
         <br></br>
+        </>
+      ) : (
+        <>
+
+        </>
+      )}
+
         <NavLink className="button" exact to="/cart">
             <>Cart</>
         </NavLink>
@@ -117,16 +126,24 @@ function Navbar({ setLoggedIn, loggedIn }) {
         <>Collectibles & Toys</>
       </NavLink>
 
-      <NavLink className="button" exact to="/logout">
+      {loggedIn === true ? (
+        <>
+                <NavLink className="button" exact to="">
         <div id='logout'
           onClick={() => {
-            setLoggedIn(false);
             handleLogOut();
           }}
         >
           Logout
         </div>
       </NavLink>
+        </>
+      ) : (
+        <>
+
+        </>
+      )}
+
     </div>
   );
 }
