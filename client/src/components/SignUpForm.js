@@ -11,7 +11,7 @@ function SignUpForm({ setLoggedIn, setSignedup }) {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
-  const [email_address, setEmailAddress] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password_confirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
@@ -28,16 +28,17 @@ function SignUpForm({ setLoggedIn, setSignedup }) {
       body: JSON.stringify({
         name,
         image,
-        email_address,
+        email,
         username,
         password,
         password_confirmation
       }),
     }).then((response) => {
       if (response.ok) {
-        console.log(        name,
-          phone_number,
-          email_address,
+        console.log(        
+          name,
+          image,
+          email,
           username,
           password,
           password_confirmation)
@@ -89,8 +90,8 @@ function SignUpForm({ setLoggedIn, setSignedup }) {
         <input
           type="text"
           id="emailAddress"
-          value={email_address}
-          onChange={(e) => setEmailAddress(e.target.value)}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </div>
 
