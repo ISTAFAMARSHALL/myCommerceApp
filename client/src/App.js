@@ -9,6 +9,7 @@ import ProductDetails from './pages/ProductDetails';
 import ProductCategory from './pages/ProductCategory';
 import Account from './pages/Account';
 import NavBar from './components/NavBar';
+import Cart from './components/Cart';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -81,7 +82,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={ProductList} />
           <Route path="/product/:id" component={ProductDetails} />
-          <Route path="/cart" />
+          <Route path="/cart" component={Cart} />
           <Route path="/account" render={() => <Account setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
         </Switch>
       </div>

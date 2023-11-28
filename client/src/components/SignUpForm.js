@@ -108,7 +108,7 @@ function SignUpForm({ setLoggedIn, setSignedup }) {
       <div>
         <label>Password Confirmation</label>
         <input
-          type="password"
+          type="passwordConfirmation"
           id="passwordConfirmation"
           value={password_confirmation}
           onChange={(e) => setPasswordConfirmation(e.target.value)}
