@@ -42,6 +42,23 @@ const ProductList = ({ setItems }) => {
       
     }, []);
     
+    const handleAddToCart = async (product) => {
+      product['quantity'] = '1';
+      console.log("clicked", product);
+      
+      const response = await fetch(`/cart_items`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ product}),
+      });
+      if (response.ok) {
+        const data = await response.json();
+        setItems(data.items);
+        // history.push("/cart");
+      }
+    }
     
   return (
     <div className="product-list">
@@ -53,7 +70,7 @@ const ProductList = ({ setItems }) => {
           <div className="product-details">
             <h3 className="product-name">{product.name}</h3>
             <p className="product-price">${product.salePrice}</p>
-            <button onClick={() => console.log("clicked", product)}
+            <button onClick={() => handleAddToCart(product)}
             className="add-to-cart-button">Add to Cart</button>
           </div>
         </div>

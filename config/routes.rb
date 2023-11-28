@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users
   resources :orders
   resources :carts
+  resources :cart_items
 
   get "/products/:category", to: "products#category"
   get "/me", to: "users#me"

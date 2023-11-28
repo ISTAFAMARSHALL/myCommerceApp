@@ -21,8 +21,8 @@ class UsersController < ApplicationController
 
     def create
         user = User.create!(user_params).authenticate(params[:password])
-        user.carts.create!
         session[:user_id] ||= user.id
+        user.carts.create!
         render json: user, status: :created
     end
 
