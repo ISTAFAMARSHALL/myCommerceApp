@@ -46,7 +46,7 @@ class CartsController < ApplicationController
     def set_cart
       @cart = Cart.find(params[:id])
     end
-  
+    
     def cart_params
       params.permit(:user_id, :product_id, :quantity)
     end

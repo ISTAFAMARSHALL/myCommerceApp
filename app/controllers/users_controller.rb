@@ -11,12 +11,17 @@ class UsersController < ApplicationController
     #     render json: @current_user
     # end
 
+    # def me
+    #     render json: @current_user, status: :ok
+    # end
+
     def me
-        render json: @current_user, status: :ok
+        render json: @current_user.as_json(include: :carts), status: :ok
     end
 
     def create
         user = User.create!(user_params).authenticate(params[:password])
+        user.carts.create!
         session[:user_id] ||= user.id
         render json: user, status: :created
     end

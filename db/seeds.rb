@@ -17,6 +17,8 @@
     password = "admin#{index + 1}";
     image = imageUrl
 
-    User.create!(email: email, image: image, password: password, password_confirmation: password, username: username, name: name)
+    user = User.create!(email: email, image: image, password: password, password_confirmation: password, username: username, name: name)
+
+    user.carts.create!
 
 end
