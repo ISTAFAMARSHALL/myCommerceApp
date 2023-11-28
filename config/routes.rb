@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :products
   resources :users
   resources :orders
-  resources :categories
+  resources :carts
 
   get "/products/:category", to: "products#category"
   get "/me", to: "users#me"

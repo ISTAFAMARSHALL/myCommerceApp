@@ -1,7 +1,9 @@
 # app/controllers/carts_controller.rb
 
 class CartsController < ApplicationController
-    before_action :set_cart, only: [:show, :update, :destroy]
+    before_action :set_cart
+    
+    # , only: [:show, :update, :destroy]
     
     def index
       # Display all carts (optional)
@@ -46,7 +48,7 @@ class CartsController < ApplicationController
     end
   
     def cart_params
-      params.require(:cart).permit(:user_id, :product_id, :quantity)
+      params.permit(:user_id, :product_id, :quantity)
     end
   end
   
