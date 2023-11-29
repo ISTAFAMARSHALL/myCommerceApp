@@ -80,9 +80,9 @@ function App() {
         {userSelection ? <NavBar setLoggedIn={setLoggedIn} loggedIn={loggedIn} /> : ''}
 
         <Switch>
-          <Route path="/" exact component={ProductList} />
-          <Route path="/product/:id" component={ProductDetails} />
-          <Route path="/cart" component={Cart} />
+          <Route path="/" render={() => <ProductList setItems={setItems} items={items} />} />
+          <Route path="/product/:id" render={() => <ProductDetails setItems={setItems} items={items} />} />
+          <Route path="/cart" render={() => <Cart setItems={setItems} items={items} />} />
           <Route path="/account" render={() => <Account setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
         </Switch>
       </div>
