@@ -14,7 +14,7 @@ const Cart = () => {
       }
 
       const data = await response.json();
-      setCartItems(data);
+      setCartItems(data.cart_items);
     } catch (error) {
       console.error('Error fetching cart items:', error);
     }
@@ -25,7 +25,7 @@ const Cart = () => {
     fetchCartItems();
   }, [currentUser]);
 
-  console.log('cartItems:', cartItems);
+  console.log('cartItems:', cartItems.reduce((total, item) => total + item.quantity, 0));
   // Function to calculate the total quantity of items in the cart
   const calculateTotalQuantity = () => {
     return cartItems.reduce((total, item) => total + item.quantity, 0);
@@ -33,13 +33,29 @@ const Cart = () => {
 
   return (
     <div className="cart">
-      <h2>Your Shopping Cart</h2>
-      {/* <p>Total Items: {calculateTotalQuantity()}</p> */}
 
+      < div className="cart-header">
+      <h2>Your Shopping Cart</h2>
+      <p>Total Items: {calculateTotalQuantity()}</p>
+      </div>
+
+      <div className="cart-items">
+      {cartItems.map(item => (
+        <div key={item.id} className="product-card">
+          <img src={item.image} alt={item.name} className="product-image" />
+          <div className="product-details">
+            <h3 className="product-name">{item.name}</h3>
+            <p className="product-price">Quantity: {item.quantity}</p>
+          </div>
+        </div>
+      ))}
+      </div>
+      
       {/* <ul>
         {cartItems.map(item => (
           <li key={item.id}>
-            {item.product_name} - Quantity: {item.quantity}
+            <img src={item.image} alt={item.name} className="product-image" />
+            {item.name} - Quantity: {item.quantity}
           </li>
         ))}
       </ul> */}

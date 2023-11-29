@@ -12,6 +12,14 @@ body {
   padding: 20px;
 }
 
+.cart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+}
+
 .product-card,
 .product {
   background-color: #fff;
