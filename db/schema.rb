@@ -19,6 +19,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_215057) do
     t.string "name"
     t.string "salePrice"
     t.string "sku"
+    t.string "cart_id"
     t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

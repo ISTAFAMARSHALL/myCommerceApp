@@ -21,4 +21,13 @@
 
     user.carts.create!
 
+    product1 = {sku: 1000006, name: 'Spy Kids: All the Time in the World [Includes Digital Copy] [Blu-ray] [2011]', salePrice: 14.99, image: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1000/1000006_sa.jpg', quantity: '1'}
+
+    user.carts.first.cart_items.create!(product1)
+
+    product2 = {sku: 1000007, name: 'The Smurfs [Includes Digital Copy] [Blu-ray] [2011]', salePrice: 14.99, image: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1000/1000007_sa.jpg', quantity: '1'}
+
+    user.carts.first.cart_items.create!(product2)
+
+
 end

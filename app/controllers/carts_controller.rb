@@ -13,7 +13,8 @@ class CartsController < ApplicationController
   
     def show
       # Display a specific cart
-      render json: @cart
+      # render json: @cart
+      render json: @cart.as_json(include: :cart_items), status: :ok
     end
   
     def create

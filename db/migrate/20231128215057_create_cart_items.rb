@@ -5,7 +5,7 @@ class CreateCartItems < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :salePrice
       t.string :sku
-      
+      t.string :cart_id
       t.integer :quantity
       
       t.timestamps

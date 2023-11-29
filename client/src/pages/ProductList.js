@@ -51,11 +51,12 @@ const ProductList = ({ setItems }) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ product}),
+        body: JSON.stringify(product),
       });
       if (response.ok) {
         const data = await response.json();
-        setItems(data.items);
+        console.log("data", data);
+        // setItems(data.items);
         // history.push("/cart");
       }
     }
