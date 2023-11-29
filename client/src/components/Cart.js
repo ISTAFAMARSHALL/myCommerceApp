@@ -25,7 +25,6 @@ const Cart = () => {
     fetchCartItems();
   }, [currentUser]);
 
-  console.log('cartItems:', cartItems.reduce((total, item) => total + item.quantity, 0));
   // Function to calculate the total quantity of items in the cart
   const calculateTotalQuantity = () => {
     return cartItems.reduce((total, item) => total + item.quantity, 0);
@@ -50,15 +49,7 @@ const Cart = () => {
         </div>
       ))}
       </div>
-      
-      {/* <ul>
-        {cartItems.map(item => (
-          <li key={item.id}>
-            <img src={item.image} alt={item.name} className="product-image" />
-            {item.name} - Quantity: {item.quantity}
-          </li>
-        ))}
-      </ul> */}
+
     </div>
   );
 };

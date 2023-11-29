@@ -34,6 +34,25 @@ const ProductDetails = () => {
     return <div>Nothing</div>;
   }
 
+  const handleAddToCart = async (product) => {
+    product['quantity'] = '1';
+    console.log("clicked", product);
+    
+    const response = await fetch(`/cart_items`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+    if (response.ok) {
+      const data = await response.json();
+      console.log("data", data);
+      // setItems(data.items);
+      // history.push("/cart");
+    }
+  }
+  
   return (
     <div className="product-detail">
       {product.products &&
@@ -44,11 +63,11 @@ const ProductDetails = () => {
                 <img src={product?.image} alt={product?.name} className="product-image" />
               </div>
             </NavLink>
-            <div className="product-info">
+            <div className="product-details">
               <h2 className="product-name">{product?.name}</h2>
               <p className="product-price">${product?.salePrice}</p>
-              <button className="add-to-cart-button">Add to Cart</button>
-              <p className="product-description">{product?.description}</p>
+              <button onClick={() => handleAddToCart(product)}
+              className="add-to-cart-button">Add to Cart</button>
             </div>
           </div>
         ))}
