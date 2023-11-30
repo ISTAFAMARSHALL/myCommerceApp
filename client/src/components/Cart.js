@@ -154,6 +154,34 @@ const Cart = ({items, setItems}) => {
     }
   };
 
+  // const handleOrderSubmission = async () => {
+  //   try {
+  //     const response = await fetch(`/orders`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({
+  //         user_id: currentUser.id,
+  //         items: items.map((item) => ({
+  //           id: item.id,
+  //           quantity: item.quantity,
+  //         })),
+  //       }),
+  //     });
+
+  //     if (response.ok) {
+  //       // Clear the cart after successful order submission
+  //       setItems([]);
+  //       // history.push('/order');
+  //     } else {
+  //       throw new Error('Error submitting order');
+  //     }
+  //   } catch (error) {
+  //     console.error('Error submitting order:', error);
+  //   }
+  // };
+
   const handleOrderSubmission = async () => {
     try {
       const response = await fetch(`/orders`, {
@@ -164,15 +192,16 @@ const Cart = ({items, setItems}) => {
         body: JSON.stringify({
           user_id: currentUser.id,
           items: items.map((item) => ({
-            id: item.id,
+            cart_items_id: item.id,
             quantity: item.quantity,
           })),
         }),
       });
-
+  
       if (response.ok) {
         // Clear the cart after successful order submission
         setItems([]);
+        // Redirect to the order page if needed
         // history.push('/order');
       } else {
         throw new Error('Error submitting order');
@@ -181,6 +210,7 @@ const Cart = ({items, setItems}) => {
       console.error('Error submitting order:', error);
     }
   };
+  
 
   return (
     <div className="cart">
