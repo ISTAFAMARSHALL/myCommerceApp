@@ -77,12 +77,20 @@ class OrdersController < ApplicationController
   def create
     # user = User.find(params[:user_id])
     items = params[:items]
-
+    order_items = []
     puts items
+
+    items.each do |item|
+      
+      item = CartItem.find(item[:id])
+
+      order_items << {sku: item[:sku], name: item[:name], salePrice: item[:salePrice], image: item[:image], quantity: item[:quantity]}
+
+    end
 
     # Perform any additional processing as needed (e.g., calculating total amount)
 
-    order = @current_user.orders.create!(cart_id: @current_user.id, order_items: items , total_amount: calculate_total_amount(items))
+    order = @current_user.orders.create!(cart_id: @current_user.id, order_items: order_items , total_amount: calculate_total_amount(order_items))
 
     # render json: { order_id: order.id, total_amount: order.total_amount }, status: :created
 
@@ -94,7 +102,7 @@ class OrdersController < ApplicationController
 
   def calculate_total_amount(items)
     # Implement your logic to calculate the total amount based on items
-    items.sum { |item| item[:salePrice].to_f * item[:quantity].to_i }
+    items.sum { |item| item[:salePrice].to_f * item[:quantity].to_f }
   end
 
 end
