@@ -164,7 +164,7 @@ const Cart = ({items, setItems}) => {
         body: JSON.stringify({
           user_id: currentUser.id,
           items: items.map((item) => ({
-            product_id: item.id,
+            id: item.id,
             quantity: item.quantity,
           })),
         }),
@@ -201,10 +201,16 @@ const Cart = ({items, setItems}) => {
                 Quantity:
                 <input
                   type="number"
+                  defaultValue={1}
                   value={item.quantity}
                   onChange={(e) => handleUpdateQuantity(item, e.target.value)}
                 />
               </p>
+              <button className="remove-from-cart" onClick={""}>
+                Save for Later
+              </button>
+              <br></br>
+              <br></br>
               <button className="remove-from-cart" onClick={() => handleDeleteFromCart(item)}>
                 Delete from Cart
               </button>
