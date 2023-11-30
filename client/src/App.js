@@ -10,6 +10,7 @@ import ProductCategory from './pages/ProductCategory';
 import Account from './pages/Account';
 import NavBar from './components/NavBar';
 import Cart from './components/Cart';
+import OrderScreen from './components/OrderScreen';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -84,6 +85,7 @@ function App() {
           <Route path="/product/:id" render={() => <ProductDetails setItems={setItems} items={items} />} />
           <Route path="/cart" render={() => <Cart setItems={setItems} items={items} />} />
           <Route path="/account" render={() => <Account setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
+          <Route path="/order" render={() => <OrderScreen setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
         </Switch>
       </div>
     </div>
