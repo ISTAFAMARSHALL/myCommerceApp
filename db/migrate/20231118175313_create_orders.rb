@@ -2,6 +2,9 @@ class CreateOrders < ActiveRecord::Migration[7.0]
   def change
     create_table :orders do |t|
       t.string :order_items
+      t.string :total_amount
+      t.string :cart_id
+    
       t.references :user, null: false, foreign_key: true
       
       t.timestamps

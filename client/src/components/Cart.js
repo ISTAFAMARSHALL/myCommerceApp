@@ -201,7 +201,7 @@ const Cart = ({items, setItems}) => {
                 Quantity:
                 <input
                   type="number"
-                  defaultValue={1}
+                  min="1"
                   value={item.quantity}
                   onChange={(e) => handleUpdateQuantity(item, e.target.value)}
                 />

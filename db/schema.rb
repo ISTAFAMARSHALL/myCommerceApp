@@ -36,6 +36,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_215057) do
 
   create_table "orders", force: :cascade do |t|
     t.string "order_items"
+    t.string "total_amount"
+    t.string "cart_id"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
