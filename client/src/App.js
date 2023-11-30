@@ -75,12 +75,12 @@ function App() {
           </>
         )}
       </header>
-
+          
       <div className="container">
-        {userSelection ? <NavBar setLoggedIn={setLoggedIn} loggedIn={loggedIn} /> : ''}
+        {userSelection ? <NavBar setLoggedIn={setLoggedIn} loggedIn={loggedIn} items={items} /> : ''}
 
         <Switch>
-          <Route path="/" render={() => <ProductList setItems={setItems} items={items} />} />
+          <Route exact path="/" render={() => <ProductList setItems={setItems} items={items} />} />
           <Route path="/product/:id" render={() => <ProductDetails setItems={setItems} items={items} />} />
           <Route path="/cart" render={() => <Cart setItems={setItems} items={items} />} />
           <Route path="/account" render={() => <Account setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />

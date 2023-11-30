@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 
-const ProductDetails = () => {
+const ProductDetails = ({items, setItems}) => {
   const [errors, setErrors] = useState([]);
   const { id } = useParams();
   const [product, setProduct] = useState([]);
@@ -47,12 +47,16 @@ const ProductDetails = () => {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log("data", data);
-      // setItems(data.items);
+      
+      setItems(() => [...items, data]);
+      console.log("data", items);
       // history.push("/cart");
     }
   }
   
+  console.log("items", items);
+  console.log(items.map((item) => item.sku === product.sku ? "In Cart" : null));
+
   return (
     <div className="product-detail">
       {product.products &&
@@ -66,6 +70,7 @@ const ProductDetails = () => {
             <div className="product-details">
               <h2 className="product-name">{product?.name}</h2>
               <p className="product-price">${product?.salePrice}</p>
+              {items.map((item) => item.sku === product.sku ? <p>In Cart</p> : null)}
               <button onClick={() => handleAddToCart(product)}
               className="add-to-cart-button">Add to Cart</button>
             </div>

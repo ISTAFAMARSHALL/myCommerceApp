@@ -3,7 +3,7 @@ import { useEffect , useState, useContext} from "react";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-const ProductList = ({ setItems }) => {
+const ProductList = ({ items, setItems }) => {
 
     const [errors, setErrors] = useState([]);
 
@@ -55,8 +55,9 @@ const ProductList = ({ setItems }) => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log("data", data);
-        // setItems(data.items);
+        
+        setItems(() => [...items, data]);
+        console.log("data", items);
         // history.push("/cart");
       }
     }

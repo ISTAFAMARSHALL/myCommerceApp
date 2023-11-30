@@ -83,8 +83,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { UserContext } from '../context/user';
 
-const Cart = () => {
-  const [cartItems, setCartItems] = useState([]);
+const Cart = ({items, setItems}) => {
+
+  // const [items, setItems] = useState([]);
   const { currentUser, setCurrentUser } = useContext(UserContext);
 
   const fetchCartItems = async () => {
@@ -96,7 +97,7 @@ const Cart = () => {
       }
 
       const data = await response.json();
-      setCartItems(data.cart_items);
+      setItems(data.cart_items);
     } catch (error) {
       console.error('Error fetching cart items:', error);
     }
@@ -109,11 +110,11 @@ const Cart = () => {
 
   // Function to calculate the total quantity of items in the cart
   const calculateTotalQuantity = () => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
+    return items.reduce((total, item) => total + item.quantity, 0);
   };
 
   const calculateTotal = () => {
-    const total = cartItems.reduce((total, item) => total + item.salePrice * item.quantity, 0);
+    const total = items.reduce((total, item) => total + item.salePrice * item.quantity, 0);
     return parseFloat(total.toFixed(2));
   };
 
@@ -162,7 +163,7 @@ const Cart = () => {
       </div>
 
       <div className="cart-items">
-        {cartItems.map((item) => (
+        {items.map((item) => (
           <div key={item.id} className="product-card">
             <img src={item.image} alt={item.name} className="product-image" />
             <div className="product-details">
