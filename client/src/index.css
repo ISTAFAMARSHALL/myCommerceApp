@@ -345,3 +345,39 @@ button:hover {
   justify-content: space-evenly;
   justify-content: space-around;
 }
+
+/* index.css */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.order-screen {
+  padding: 20px;
+  max-width: 600px;
+  margin: 50px auto;
+  margin-top: auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-details {
+  margin-top: 20px;
+}
+
+.order-details ul {
+  text-align: left;
+  list-style: none;
+  padding: 0;
+}
+
+.order-details li {
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+
