@@ -82,10 +82,14 @@
 
 import React, { useEffect, useState, useContext } from 'react';
 import { UserContext } from '../context/user';
+import { useHistory } from 'react-router-dom';
+
+
 
 const Cart = ({items, setItems}) => {
 
   // const [items, setItems] = useState([]);
+  const history = useHistory();
   const { currentUser, setCurrentUser } = useContext(UserContext);
 
   const fetchCartItems = async () => {
@@ -184,6 +188,11 @@ const Cart = ({items, setItems}) => {
 
   const handleOrderSubmission = async () => {
     try {
+      console.log(currentUser.id,
+        items.map((item) => ({
+          cart_items_id: item.id,
+          quantity: item.quantity,
+        })),);
       const response = await fetch(`/orders`, {
         method: 'POST',
         headers: {
@@ -199,10 +208,13 @@ const Cart = ({items, setItems}) => {
       });
   
       if (response.ok) {
+
+        const data = await response.json();
+        console.log(data);
         // Clear the cart after successful order submission
         setItems([]);
         // Redirect to the order page if needed
-        // history.push('/order');
+        history.push(`/order/${data.id}`);
       } else {
         throw new Error('Error submitting order');
       }

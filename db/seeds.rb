@@ -36,11 +36,7 @@
         items.sum { |item| item[:salePrice].to_i * item[:quantity].to_i }
     end
 
-    user.orders.create!(cart_id: user.id ,order_items: items , total_amount: calculate_total_amount(items))
-
-    # items.each do |item|
-    #     OrderItem.create(order: order, id: item[:id], quantity: item[:quantity])
-    # end
+    order = user.orders.create!(cart_id: user.id, order_items: items , total_amount: calculate_total_amount(items))
 
 
 end

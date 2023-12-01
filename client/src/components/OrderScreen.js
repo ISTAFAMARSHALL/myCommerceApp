@@ -1,13 +1,18 @@
 import React  from 'react';
 import { useEffect , useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const OrderScreen = ({  }) => {
 
   const [order, setOrder] = useState([]);
 
+  const { id } = useParams();// This is how we access the URL parameters
+  
+  console.log("id", id);
+
   const fetchOrder = async () => {
     try {
-      const response = await fetch(`/orders/20`); // Adjust the endpoint based on your API
+      const response = await fetch(`/orders/${id}`); // Adjust the endpoint based on your API
 
       if (!response.ok) {
         throw new Error('Error fetching cart items');
@@ -27,7 +32,7 @@ const OrderScreen = ({  }) => {
   }, []);
   
 
-  console.log(order.order_items);
+  console.log(order);
 
   return (
     <div className="order-screen">

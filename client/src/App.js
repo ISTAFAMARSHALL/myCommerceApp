@@ -85,7 +85,7 @@ function App() {
           <Route path="/product/:id" render={() => <ProductDetails setItems={setItems} items={items} />} />
           <Route path="/cart" render={() => <Cart setItems={setItems} items={items} />} />
           <Route path="/account" render={() => <Account setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
-          <Route path="/order" render={() => <OrderScreen setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
+          <Route path="/order/:id" render={() => <OrderScreen setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
         </Switch>
       </div>
     </div>
