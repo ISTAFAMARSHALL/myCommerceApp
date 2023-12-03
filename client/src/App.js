@@ -100,7 +100,7 @@ function App() {
       </header>
           
       <div className="container">
-        {userSelection ? <NavBar setLoggedIn={setLoggedIn} loggedIn={loggedIn} items={cartItems} /> : ''}
+        {userSelection ? <NavBar setLoggedIn={setLoggedIn} loggedIn={loggedIn} cartItems={cartItems} /> : ''}
 
         <Switch>
           <Route exact path="/" render={() => <ProductList setCartItems={setCartItems} cartItems={cartItems} />} />

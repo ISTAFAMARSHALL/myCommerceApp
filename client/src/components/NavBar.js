@@ -3,7 +3,7 @@ import { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { UserContext } from '../context/user';
 
-function Navbar({ setLoggedIn, loggedIn }) {
+function Navbar({ setLoggedIn, loggedIn , cartItems}) {
   const { currentUser, setCurrentUser } = useContext(UserContext);
   const [navbarVisible, setNavbarVisible] = useState(true);
   const [userSelection, setUserSelection] = useState('');
@@ -16,6 +16,13 @@ function Navbar({ setLoggedIn, loggedIn }) {
 
   const handleUserSelection = (selection) => {
     setUserSelection(selection);
+  };
+
+  console.log('navbar', currentUser); 
+
+  const calculateTotalQuantity = () => {
+    const total = cartItems.reduce((total, item) => total + item.quantity, 0);
+    return parseInt(total);
   };
 
   return (
@@ -58,7 +65,7 @@ function Navbar({ setLoggedIn, loggedIn }) {
         {loggedIn ?         
         
         <NavLink className="button" exact to="/cart">
-            <>My Cart</>
+            <>View { cartItems.length === 0 ? "My " : `${calculateTotalQuantity()} item`}{cartItems.length >= 2 ? "s" : ""} in Cart</>
         </NavLink> : <></>  }
 
         </div>
