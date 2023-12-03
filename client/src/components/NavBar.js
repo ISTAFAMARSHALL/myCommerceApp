@@ -55,9 +55,12 @@ function Navbar({ setLoggedIn, loggedIn }) {
         </>
       )}
 
+        {loggedIn ?         
+        
         <NavLink className="button" exact to="/cart">
             <>My Cart</>
-        </NavLink>
+        </NavLink> : <></>  }
+
         </div>
         {/* NavLink elements for Best Buy categories */}
       <NavLink className="button" to="/product/laptops">

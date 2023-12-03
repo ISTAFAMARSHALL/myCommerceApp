@@ -18,24 +18,44 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [userChecked, setUserChecked] = useState(false);
 
-  useEffect(() => {
-    const checkUserSession = async () => {
-      try {
-        const response = await fetch('/me');
-        if (response.ok) {
-          const data = await response.json();
-          setCurrentUser(data);
-          setLoggedIn(true);
-        }
-      } catch (error) {
-        console.error('Error checking user session:', error);
-      } finally {
-        setUserChecked(true);
+  // const fetchCartItems = async () => {
+  //   try {
+  //     const response = await fetch(`/carts/${currentUser.id}`); // Adjust the endpoint based on your API
+
+  //     if (!response.ok) {
+  //       throw new Error('Error fetching cart items');
+  //     }
+
+  //     const data = await response.json();
+  //     setCartItems(data.cart_items);
+  //   } catch (error) {
+  //     console.error('Error fetching cart items:', error);
+  //   }
+  // };
+
+  const checkUserSession = async () => {
+    try {
+      const response = await fetch('/me');
+      if (response.ok) {
+        const data = await response.json();
+        setCurrentUser(data);
+        setLoggedIn(true);
       }
-    };
+    } catch (error) {
+      console.error('Error checking user session:', error);
+    } finally {
+      // fetchCartItems();
+      setUserChecked(true);
+      // Call the async function to fetch cart items when the component mounts
+      
+    }
+  };
+
+  useEffect(() => {
 
     if (!userChecked) {
       checkUserSession();
+      // fetchCartItems();
     }
   }, [userChecked, setCurrentUser]);
 

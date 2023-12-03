@@ -1,6 +1,3 @@
-// 
-
-// ProductDetails.js
 import React, { useEffect, useState } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 

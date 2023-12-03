@@ -10,29 +10,10 @@ const Cart = ({cartItems, setCartItems}) => {
   const history = useHistory();
   const { currentUser, setCurrentUser } = useContext(UserContext);
 
-  // const fetchCartItems = async () => {
-  //   try {
-  //     const response = await fetch(`/carts/${currentUser.id}`); // Adjust the endpoint based on your API
-
-  //     if (!response.ok) {
-  //       throw new Error('Error fetching cart items');
-  //     }
-
-  //     const data = await response.json();
-  //     setItems(data.cart_items);
-  //   } catch (error) {
-  //     console.error('Error fetching cart items:', error);
-  //   }
-  // };
-  
-  // useEffect(() => {
-  //   // Call the async function to fetch cart items when the component mounts
-  //   fetchCartItems();
-  // }, []);
-
   // Function to calculate the total quantity of items in the cart
   const calculateTotalQuantity = () => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
+    const total = cartItems.reduce((total, item) => total + item.quantity, 0);
+    return parseInt(total);
   };
 
   const calculateTotal = () => {
@@ -46,9 +27,15 @@ const Cart = ({cartItems, setCartItems}) => {
         method: 'DELETE',
       });
 
-      if (!response.ok) {
+      if (response.ok) {
+        // Remove the item from the cart items state
+        const newCartItems = cartItems.filter((cartItem) => cartItem.id !== item.id);
+        setCartItems(newCartItems); // Update the cart items state
+
+      } else {
         throw new Error('Error deleting item from cart');
       }
+
       // If the item was successfully deleted from the cart, we can fetch the updated cart items
       // fetchCartItems();
     } catch (error) {
@@ -66,9 +53,21 @@ const Cart = ({cartItems, setCartItems}) => {
         body: JSON.stringify({ quantity: newQuantity }),
       });
 
-      if (!response.ok) {
+      if (response.ok) {
+        // Update the quantity of the item in the cart items state
+        const newCartItems = cartItems.map((cartItem) => {
+          if (cartItem.id === item.id) {
+            return { ...cartItem, quantity: newQuantity };
+          } else {
+            return cartItem;
+          }
+        });
+        setCartItems(newCartItems); // Update the cart items state
+
+      } else {
         throw new Error('Error updating quantity');
       }
+
       // If the quantity was successfully updated, we can fetch the updated cart items
       // fetchCartItems();
     } catch (error) {
@@ -150,8 +149,11 @@ const Cart = ({cartItems, setCartItems}) => {
           </div>
         ))}
       </div>
-      <button onClick={handleOrderSubmission} className="submit-order-button">
-        Submit Order
+      <button onClick={handleOrderSubmission}
+        className="submit-order-button"
+        disabled={currentUser?.id === undefined || cartItems.length === 0}
+      >  
+        {currentUser?.id ? 'Submit Order' : 'Sign In to Submit Order'}
       </button>
     </div>
   );
