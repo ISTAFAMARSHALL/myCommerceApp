@@ -3,7 +3,7 @@ import { useEffect , useState, useContext} from "react";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-const ProductList = ({ items, setItems }) => {
+const ProductList = ({ cartItems, setCartItems }) => {
 
     const [errors, setErrors] = useState([]);
 
@@ -44,7 +44,7 @@ const ProductList = ({ items, setItems }) => {
     
     const handleAddToCart = async (product) => {
       product['quantity'] = '1';
-      console.log("clicked", product);
+      
       
       const response = await fetch(`/cart_items`, {
         method: "POST",
@@ -56,27 +56,41 @@ const ProductList = ({ items, setItems }) => {
       if (response.ok) {
         const data = await response.json();
         
-        setItems(() => [...items, data]);
-        console.log("data", items);
+        setCartItems(() => [...cartItems, data]);
+        
         // history.push("/cart");
       }
     }
+
+    console.log('Cart items', cartItems.map((item) => item.sku));
     
   return (
     <div className="product-list">
-      {products.products?.map((product) => (
-        <div key={product.sku} className="product-card"  >
-          <NavLink to={`/product/${product.sku}`}  >
-          <img src={product.image} alt={product.name} className="product-image" />
-          </NavLink>
-          <div className="product-details">
-            <h3 className="product-name">{product.name}</h3>
-            <p className="product-price">${product.salePrice}</p>
-            <button onClick={() => handleAddToCart(product)}
-            className="add-to-cart-button">Add to Cart</button>
+      {products.products?.map((product) => {
+        const isInCart = cartItems.filter((item) => parseInt(item.sku) === product.sku).length > 0;
+        console.log(cartItems.map((item) => parseInt(item.sku)));
+        console.log(isInCart);
+        
+
+        return (
+          <div key={product.sku} className="product-card">
+            <NavLink to={`/product/${product.sku}`}>
+              <img src={product.image} alt={product.name} className="product-image" />
+            </NavLink>
+            <div className="product-details">
+              <h3 className="product-name">{product.name}</h3>
+              <p className="product-price">${product.salePrice}</p>
+              <button
+                onClick={() => handleAddToCart(product)}
+                className="add-to-cart-button"
+                disabled={isInCart}
+              >
+                {isInCart ? 'In Cart' : 'Add to Cart'}
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };

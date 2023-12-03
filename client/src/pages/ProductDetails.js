@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 
-const ProductDetails = ({items, setItems}) => {
+const ProductDetails = ({cartItems, setCartItems}) => {
   const [errors, setErrors] = useState([]);
   const { id } = useParams();
   const [product, setProduct] = useState([]);
@@ -48,34 +48,42 @@ const ProductDetails = ({items, setItems}) => {
     if (response.ok) {
       const data = await response.json();
       
-      setItems(() => [...items, data]);
-      console.log("data", items);
+      setCartItems(() => [...cartItems, data]);
+      console.log("data", cartItems);
       // history.push("/cart");
     }
   }
   
-  console.log("items", items);
-  console.log(items.map((item) => item.sku === product.sku ? "In Cart" : null));
+  console.log("items", cartItems);
+  console.log(cartItems.map((item) => item.sku === product.sku ? "In Cart" : null));
 
   return (
     <div className="product-detail">
-      {product.products &&
-        product.products.map((product) => (
-          <div key={product?.sku} className="product">
-            <NavLink to={`/product/${product?.sku}`}>
-              <div className="product-image-container">
-                <img src={product?.image} alt={product?.name} className="product-image" />
-              </div>
+      {product.products?.map((product) => {
+        const isInCart = cartItems.filter((item) => parseInt(item.sku) === product.sku).length > 0;
+        console.log(cartItems.map((item) => parseInt(item.sku)));
+        console.log(isInCart);
+        
+
+        return (
+          <div key={product.sku} className="product-card">
+            <NavLink to={`/product/${product.sku}`}>
+              <img src={product.image} alt={product.name} className="product-image" />
             </NavLink>
             <div className="product-details">
-              <h2 className="product-name">{product?.name}</h2>
-              <p className="product-price">${product?.salePrice}</p>
-              {items.map((item) => item.sku === product.sku ? <p>In Cart</p> : null)}
-              <button onClick={() => handleAddToCart(product)}
-              className="add-to-cart-button">Add to Cart</button>
+              <h3 className="product-name">{product.name}</h3>
+              <p className="product-price">${product.salePrice}</p>
+              <button
+                onClick={() => handleAddToCart(product)}
+                className="add-to-cart-button"
+                disabled={isInCart}
+              >
+                {isInCart ? 'In Cart' : 'Add to Cart'}
+              </button>
             </div>
           </div>
-        ))}
+        );
+      })}
     </div>
   );
 };

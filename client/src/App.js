@@ -15,7 +15,7 @@ import OrderScreen from './components/OrderScreen';
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
   const { currentUser, setCurrentUser } = useContext(UserContext);
-  const [items, setItems] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
   const [userChecked, setUserChecked] = useState(false);
 
   useEffect(() => {
@@ -40,6 +40,8 @@ function App() {
   }, [userChecked, setCurrentUser]);
 
   const [userSelection, setUserSelection] = useState(false);
+
+  // console.log('Cart items', cartItems);
 
   if (!userChecked) {
     // Show a loading indicator while checking user session
@@ -78,12 +80,12 @@ function App() {
       </header>
           
       <div className="container">
-        {userSelection ? <NavBar setLoggedIn={setLoggedIn} loggedIn={loggedIn} items={items} /> : ''}
+        {userSelection ? <NavBar setLoggedIn={setLoggedIn} loggedIn={loggedIn} items={cartItems} /> : ''}
 
         <Switch>
-          <Route exact path="/" render={() => <ProductList setItems={setItems} items={items} />} />
-          <Route path="/product/:id" render={() => <ProductDetails setItems={setItems} items={items} />} />
-          <Route path="/cart" render={() => <Cart setItems={setItems} items={items} />} />
+          <Route exact path="/" render={() => <ProductList setCartItems={setCartItems} cartItems={cartItems} />} />
+          <Route path="/product/:id" render={() => <ProductDetails setCartItems={setCartItems} cartItems={cartItems} />} />
+          <Route path="/cart" render={() => <Cart setCartItems={setCartItems} cartItems={cartItems} />} />
           <Route path="/account" render={() => <Account setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
           <Route path="/order/:id" render={() => <OrderScreen setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
         </Switch>
