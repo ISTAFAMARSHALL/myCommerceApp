@@ -18,20 +18,21 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [userChecked, setUserChecked] = useState(false);
 
-  // const fetchCartItems = async () => {
-  //   try {
-  //     const response = await fetch(`/carts/${currentUser.id}`); // Adjust the endpoint based on your API
+  const fetchCartItems = async (data) => {
+    console.log('fetchCartItems', data.id);
+    try {
+      const response = await fetch(`/carts/${data.id}`); // Adjust the endpoint based on your API
 
-  //     if (!response.ok) {
-  //       throw new Error('Error fetching cart items');
-  //     }
+      if (!response.ok) {
+        throw new Error('Error fetching cart items');
+      }
 
-  //     const data = await response.json();
-  //     setCartItems(data.cart_items);
-  //   } catch (error) {
-  //     console.error('Error fetching cart items:', error);
-  //   }
-  // };
+      const resData = await response.json();
+      setCartItems(resData.cart_items);
+    } catch (error) {
+      console.error('Error fetching cart items:', error);
+    }
+  };
 
   const checkUserSession = async () => {
     try {
@@ -40,11 +41,12 @@ function App() {
         const data = await response.json();
         setCurrentUser(data);
         setLoggedIn(true);
+        fetchCartItems(data);
       }
     } catch (error) {
       console.error('Error checking user session:', error);
     } finally {
-      // fetchCartItems();
+      
       setUserChecked(true);
       // Call the async function to fetch cart items when the component mounts
       
@@ -55,7 +57,7 @@ function App() {
 
     if (!userChecked) {
       checkUserSession();
-      // fetchCartItems();
+      
     }
   }, [userChecked, setCurrentUser]);
 

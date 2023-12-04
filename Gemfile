@@ -10,6 +10,7 @@ gem 'bcrypt'
 gem 'active_model_serializers'
 
 gem 'redis-store'
+
 gem 'rack-attack'
 
 
