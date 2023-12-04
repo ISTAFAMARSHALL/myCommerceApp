@@ -3,7 +3,7 @@ import { useEffect , useState, useContext} from "react";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-const ProductList = ({ cartItems, setCartItems }) => {
+const ProductList = ({ cartItems, setCartItems , loggedIn}) => {
 
     const [errors, setErrors] = useState([]);
 
@@ -85,7 +85,8 @@ const ProductList = ({ cartItems, setCartItems }) => {
                 className="add-to-cart-button"
                 disabled={isInCart}
               >
-                {isInCart ? 'In Cart' : 'Add to Cart'}
+                {loggedIn ? isInCart ? 'In Cart' : 'Add to Cart' : 'Sign In to add to cart'}
+
               </button>
             </div>
           </div>

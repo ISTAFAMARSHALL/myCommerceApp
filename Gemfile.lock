@@ -78,6 +78,7 @@ GEM
     case_transform (0.2)
       activesupport
     concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     crass (1.0.6)
     date (3.3.4)
     debug (1.8.0)
@@ -133,6 +134,8 @@ GEM
       nio4r (~> 2.0)
     racc (1.7.3)
     rack (2.2.8)
+    rack-attack (6.7.0)
+      rack (>= 1.0, < 4)
     rack-test (2.1.0)
       rack (>= 1.3)
     rails (7.0.8)
@@ -166,6 +169,12 @@ GEM
     rake (13.1.0)
     rdoc (6.6.0)
       psych (>= 4.0.0)
+    redis (5.0.8)
+      redis-client (>= 0.17.0)
+    redis-client (0.18.0)
+      connection_pool
+    redis-store (1.10.0)
+      redis (>= 4, < 6)
     reline (0.4.0)
       io-console (~> 0.5)
     rest-client (2.1.0)
@@ -193,7 +202,9 @@ DEPENDENCIES
   debug
   pg (~> 1.1)
   puma (~> 5.0)
+  rack-attack
   rails (~> 7.0.8)
+  redis-store
   rest-client
   tzinfo-data
 

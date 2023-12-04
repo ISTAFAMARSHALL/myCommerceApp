@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
 
   def fetch_product_or_products(item_params)
     puts "fetching product with sku #{item_params}"
-    sleep(1)
+    # sleep(1)
   
     if item_params.to_i.to_s == item_params
       # If the parameter is a number, fetch a single product by SKU
@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
   
   def fetch_products_by_category(category)
     puts "Fetching products for #{category} page"
-    base_url = "https://api.bestbuy.com/v1/products(categoryPath.name=#{params[:id]}*)?apiKey=#{@api_key}&sort=regularPrice&pageSize=100&format=json"
+    base_url = "https://api.bestbuy.com/v1/products(categoryPath.name=#{params[:id]}*)?apiKey=#{@api_key}&sort=customerReviewCount,regularPrice.desc&pageSize=20&format=json"
     make_api_request(base_url)
   end
   
@@ -61,46 +61,28 @@ class ProductsController < ApplicationController
     []
   end
 
-  # def fetch_product(item_params)
-  #   sleep(1)
-  #   puts "fetching product with sku #{params}"
-  #   base_url = "https://api.bestbuy.com/v1/products(sku=#{params[:id]})?apiKey=#{@api_key}&format=json"
-  #   # api_params = {
-  #   #   apiKey: @api_key,
-  #   #   format: 'json',
-  #   #   show: 'sku,name,salePrice,image',
-  #   # }
-
-  #   # Make the API request
-  #   response = RestClient.get(base_url)
-
-  #   # Parse and return the JSON response
-  #   JSON.parse(response.body)
-
-  #   rescue RestClient::ExceptionWithResponse => e
-  #   # Handle API request errors
-  #   Rails.logger.error("BestBuy API request failed: #{e.response}")
-  #   []
-  # end
 
   def fetch_products(category = nil)
     puts "fetching products for Home page"
-    sleep(1)
-      base_url = 'https://api.bestbuy.com/v1/products'
-      api_params = {
-      apiKey: @api_key,
-      pageSize: 100,
-      page: 1,
-      format: 'json',
-      show: 'sku,name,salePrice,image'
-      # Add more parameters as needed, e.g., categoryPath.name, etc.
-    }
+    
+      base_url = 'https://api.bestbuy.com/v1/products?apiKey=pF95ksO2AJ45DOumUGSfHKsl&sort=customerReviewAverage.desc,salePrice.desc&pageSize=20&format=json'
+      # 'https://api.bestbuy.com/v1/products(onSale=true&customerReviewAverage>4&customerReviewAverage<5)?'
+    #   api_params = {
+    #   apiKey: @api_key,
+    #   pageSize: 100,
+    #   page: 1,
+    #   format: 'json',
+    #   show: 'sku,name,salePrice,image'
+    #   # Add more parameters as needed, e.g., categoryPath.name, etc.
+    # }
 
     # Add category parameter if provided
-    api_params[:categoryPath.name] = category if category
+    # api_params[:categoryPath.name] = category if category
 
     # Make the API request
-    response = RestClient.get(base_url, params: api_params)
+    response = RestClient.get(base_url
+    # , params: api_params
+    )
 
     # Parse and return the JSON response
     JSON.parse(response.body)

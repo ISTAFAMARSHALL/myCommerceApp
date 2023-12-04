@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 
-const ProductDetails = ({cartItems, setCartItems}) => {
+const ProductDetails = ({cartItems, setCartItems , loggedIn}) => {
   const [errors, setErrors] = useState([]);
   const { id } = useParams();
   const [product, setProduct] = useState([]);
@@ -75,7 +75,9 @@ const ProductDetails = ({cartItems, setCartItems}) => {
                 className="add-to-cart-button"
                 disabled={isInCart}
               >
-                {isInCart ? 'In Cart' : 'Add to Cart'}
+
+                {loggedIn ? isInCart ? 'In Cart' : 'Add to Cart' : 'Sign In to add to cart'}
+
               </button>
             </div>
           </div>

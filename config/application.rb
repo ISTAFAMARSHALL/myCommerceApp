@@ -24,6 +24,8 @@ module MyCommerceApp
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    config.middleware.use Rack::Attack
+    
     # Must add these lines!
     # Adding back cookies and session middleware
     config.middleware.use ActionDispatch::Cookies
