@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   resources :carts
   resources :cart_items
   resources :orders, only: [:create]
+  resources :categories
 
-  get "/products/:category", to: "products#category"
   get "/me", to: "users#me"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"

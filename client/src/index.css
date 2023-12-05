@@ -407,3 +407,24 @@ footer {
 .footer-bottom {
   margin-top: -25px;
 }
+
+.image-navigation {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.image-navigation button {
+  width: 65px;
+  height: 35px;
+  object-fit: scale-down;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin-top: 5px;
+  margin-bottom: -20px;
+}
+
+.image-navigation button:hover {
+  transform: scale(1.1);
+} 

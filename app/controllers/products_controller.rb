@@ -86,7 +86,7 @@ class ProductsController < ApplicationController
 
     # Parse and return the JSON response
     JSON.parse(response.body)
-
+    
   rescue RestClient::ExceptionWithResponse => e
     # Handle API request errors
     Rails.logger.error("BestBuy API request failed: #{e.response}")

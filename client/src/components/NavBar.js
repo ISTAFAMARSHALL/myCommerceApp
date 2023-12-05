@@ -70,73 +70,73 @@ function Navbar({ setLoggedIn, loggedIn , cartItems}) {
 
         </div>
         {/* NavLink elements for Best Buy categories */}
-      <NavLink className="button" to="/product/laptops">
+      <NavLink className="button" to="/categories/laptops">
         <>Laptops & Computers</>
       </NavLink>
 
-      <NavLink className="button" to="/product/tvs">
+      <NavLink className="button" to="/categories/tvs">
         <>TVs & Projectors</>
       </NavLink>
 
-      <NavLink className="button" exact to="/product/games">
+      <NavLink className="button" exact to="/categories/games">
         <>Video Games, VR & Collectibles</>
       </NavLink>
 
-      <NavLink className="button" exact to="/product/appliances">
+      <NavLink className="button" exact to="/categories/appliances">
         <>Major Appliances</>
       </NavLink>
 
       {/* Add more NavLink elements for other categories */}
       
-      <NavLink className="button" exact to="/product/apple">
+      <NavLink className="button" exact to="/categories/apple">
         <>Apple</>
       </NavLink>
 
-      <NavLink className="button" exact to="/product/cell">
+      <NavLink className="button" exact to="/categories/cell">
         <>Cell Phones & Accessories</>
       </NavLink>
 
-      <NavLink className="button" exact to="/product/headphones">
+      <NavLink className="button" exact to="/categories/headphones">
         <>Headphones</>
       </NavLink>
 
-      <NavLink className="button" exact to="/product/pc">
+      <NavLink className="button" exact to="/categories/pc">
         <>PC Gaming</>
       </NavLink>
 
-      <NavLink className="button" exact to="/product/tablets">
+      <NavLink className="button" exact to="/categories/tablets">
         <>Tablets & E-Readers</>
       </NavLink>
 
-      <NavLink className="button" exact to="/product/soundbars">
+      <NavLink className="button" exact to="/categories/soundbars">
         <>Sound Bars, Bluetooth Speakers & Home Audio</>
       </NavLink>
 
-      <NavLink className="button" exact to="/product/cameras">
+      <NavLink className="button" exact to="/categories/cameras">
         <>Cameras, Camcorders & Drones</>
       </NavLink>
 
-      <NavLink className="button" exact to="/product/wearable">
+      <NavLink className="button" exact to="/categories/wearable">
         <>Wearable Technology</>
       </NavLink>
 
-      <NavLink className="button" exact to="/product/home">
+      <NavLink className="button" exact to="/categories/home">
         <>Small Appliances, Floor Care & Home Air Quality</>
       </NavLink>
 
-      <NavLink className="button" exact to="/product/smart">
+      <NavLink className="button" exact to="/categories/smart">
         <>Smart Home, Security & Wi-Fi</>
       </NavLink>
 
-      <NavLink className="button" exact to="/product/printers">
+      <NavLink className="button" exact to="/categories/printers">
         <>Printers & Computer Accessories</>
       </NavLink>
 
-      <NavLink className="button" exact to="/product/transportation">
+      <NavLink className="button" exact to="/categories/transportation">
         <>Electric Transportation</>
       </NavLink>
 
-      <NavLink className="button" exact to="/product/collectibles">
+      <NavLink className="button" exact to="/categories/collectibles">
         <>Collectibles & Toys</>
       </NavLink>
 

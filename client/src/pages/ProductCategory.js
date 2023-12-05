@@ -3,9 +3,10 @@ import { useEffect , useState, useContext} from "react";
 import { NavLink } from "react-router-dom";
 import { useHistory , useParams} from "react-router-dom";
 
-const ProductCatergory = ({ setItems }) => {
+const ProductCatergory = ({ cartItems, setCartItems , loggedIn }) => {
 
     const [errors, setErrors] = useState([]);
+    const { id } = useParams();
     const { category } = useParams();
 
     const [products, setProducts] = useState([]);
@@ -26,7 +27,7 @@ const ProductCatergory = ({ setItems }) => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch(`/products/${category}`);
+          const response = await fetch(`/categories/${id}`);
           if (response.ok) {
             const data = await response.json();
             setProducts(data);
@@ -35,17 +36,22 @@ const ProductCatergory = ({ setItems }) => {
             setErrors(errorData.errors);
           }
         } catch (error) {
-          console.error('Error fetching product:', error);
+          
         }
       };
   
-      fetchData();
-      
-    }, []);
+      if (id) {
+        fetchData();
+      }
+    }, [id]);
+  
+    if (!id) {
+      return <div>Nothing</div>;
+    }
 
     const handleAddToCart = async (product) => {
       product['quantity'] = '1';
-      console.log("clicked", product);
+      
       
       const response = await fetch(`/cart_items`, {
         method: "POST",
@@ -56,27 +62,39 @@ const ProductCatergory = ({ setItems }) => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log("data", data);
-        // setItems(data.items);
+        
+        setCartItems(() => [...cartItems, data]);
+        
         // history.push("/cart");
       }
     }
 
   return (
     <div className="product-list">
-      {products.products?.map((product) => (
-        <div key={product.sku} className="product-card"  >
-          <NavLink to={`/product/${product.sku}`}  >
-          <img src={product.image} alt={product.name} className="product-image" />
-          </NavLink>
-          <div className="product-details">
-            <h3 className="product-name">{product.name}</h3>
-            <p className="product-price">${product.salePrice}</p>
-            <button onClick={() => handleAddToCart(product)}
-            className="add-to-cart-button">Add to Cart</button>
+      {products.products?.map((product) => {
+        const isInCart = cartItems.filter((item) => parseInt(item.sku) === product.sku).length > 0;
+        
+
+        return (
+          <div key={product.sku} className="product-card">
+            <NavLink to={`/product/${product.sku}`}>
+              <img src={product.image} alt={product.name} className="product-image" />
+            </NavLink>
+            <div className="product-details">
+              <h3 className="product-name">{product.name}</h3>
+              <p className="product-price">${product.salePrice}</p>
+              <button
+                onClick={() => handleAddToCart(product)}
+                className="add-to-cart-button"
+                disabled={isInCart}
+              >
+                {loggedIn ? isInCart ? 'In Cart' : 'Add to Cart' : 'Sign In to add to cart'}
+
+              </button>
+            </div>
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };

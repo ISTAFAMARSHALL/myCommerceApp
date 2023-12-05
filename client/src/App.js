@@ -107,6 +107,7 @@ function App() {
 
         <Switch>
           <Route exact path="/" render={() => <ProductList setCartItems={setCartItems} cartItems={cartItems} loggedIn={loggedIn} />} />
+          <Route exact path="/categories/:id" render={() => <ProductCategory setCartItems={setCartItems} cartItems={cartItems} loggedIn={loggedIn} />} />
           <Route path="/product/:id" render={() => <ProductDetails setCartItems={setCartItems} cartItems={cartItems} loggedIn={loggedIn} />} />
           <Route path="/cart" render={() => <Cart setCartItems={setCartItems} cartItems={cartItems} />} />
           <Route path="/account" render={() => <Account setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
