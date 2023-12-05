@@ -18,7 +18,7 @@ const ProductDetails = ({cartItems, setCartItems , loggedIn}) => {
           setErrors(errorData.errors);
         }
       } catch (error) {
-
+        
       }
     };
 
@@ -78,6 +78,14 @@ const ProductDetails = ({cartItems, setCartItems , loggedIn}) => {
           </div>
         );
       })}
+
+      <div>
+        { errors.length <= 0 ? ("") : (
+        errors.map((err) => (
+        <li key={err}>{err}</li>
+        )))}
+      </div>
+
     </div>
   );
 };
