@@ -11,6 +11,7 @@ import Account from './pages/Account';
 import NavBar from './components/NavBar';
 import Cart from './components/Cart';
 import OrderScreen from './components/OrderScreen';
+import Footer from './components/Footer';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -112,6 +113,8 @@ function App() {
           <Route path="/order/:id" render={() => <OrderScreen setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
         </Switch>
       </div>
+
+      <Footer></Footer>
     </div>
   );
 }

@@ -80,10 +80,10 @@ const ProductDetails = ({cartItems, setCartItems , loggedIn}) => {
       })}
 
       <div>
-        { errors.length <= 0 ? ("") : (
+        { errors !== undefined ? errors.length <= 0 ? ("") : (
         errors.map((err) => (
         <li key={err}>{err}</li>
-        )))}
+        ))) : ("")}
       </div>
 
     </div>

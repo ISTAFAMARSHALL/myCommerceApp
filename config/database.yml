@@ -23,8 +23,8 @@ default: &default
 
 development:
   <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
   database: myCommerceApp_development
-  username: myCommerceApp
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -83,8 +83,6 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  
-
   database: myCommerceApp_production
   username: myCommerceApp
   password: <%= ENV["MYCOMMERCEAPP_DATABASE_PASSWORD"] %>
