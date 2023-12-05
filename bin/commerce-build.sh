@@ -13,4 +13,4 @@ bundle exec rake db:create
 
 # Add build commands for back end
 bundle exec rake db:migrate
-bundle exec rake db:seed
+# bundle exec rake db:seed
