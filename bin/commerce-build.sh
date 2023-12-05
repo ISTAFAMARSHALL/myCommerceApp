@@ -9,8 +9,8 @@ cp -a client/build/. public/
 
 bundle install
 # bundle exec rake db:drop
-bundle exec rake db:create
+# bundle exec rake db:create
 
 # Add build commands for back end
-bundle exec rake db:migrate
-bundle exec rake db:reset
+# bundle exec rake db:migrate
+# bundle exec rake db:reset
