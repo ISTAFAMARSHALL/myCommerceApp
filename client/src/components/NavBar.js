@@ -18,8 +18,6 @@ function Navbar({ setLoggedIn, loggedIn , cartItems}) {
     setUserSelection(selection);
   };
 
-  console.log('navbar', currentUser); 
-
   const calculateTotalQuantity = () => {
     const total = cartItems.reduce((total, item) => total + item.quantity, 0);
     return parseInt(total);
@@ -65,7 +63,9 @@ function Navbar({ setLoggedIn, loggedIn , cartItems}) {
         {loggedIn ?         
         
         <NavLink className="button" exact to="/cart">
-            <>View { cartItems.length === 0 ? "My " : `${calculateTotalQuantity()} item`}{cartItems.length >= 2 ? "s" : ""} in Cart</>
+            <>View { cartItems.length === 0 ? "My Cart" : `${calculateTotalQuantity()} item${cartItems.length !== 0 || cartItems.length !== 1 ?  "s in Cart" : ""}`}
+            
+            </>
         </NavLink> : <></>  }
 
         </div>

@@ -57,11 +57,12 @@ const Cart = ({cartItems, setCartItems}) => {
         // Update the quantity of the item in the cart items state
         const newCartItems = cartItems.map((cartItem) => {
           if (cartItem.id === item.id) {
-            return { ...cartItem, quantity: newQuantity };
+            return { ...cartItem, quantity: parseInt(newQuantity) };
           } else {
             return cartItem;
           }
         });
+        
         setCartItems(newCartItems); // Update the cart items state
 
       } else {
@@ -99,7 +100,7 @@ const Cart = ({cartItems, setCartItems}) => {
       if (response.ok) {
 
         const data = await response.json();
-        console.log(data);
+
         // Clear the cart after successful order submission
         setCartItems([]);
         // Redirect to the order page if needed
@@ -137,7 +138,9 @@ const Cart = ({cartItems, setCartItems}) => {
                   onChange={(e) => handleUpdateQuantity(item, e.target.value)}
                 />
               </p>
-              <button className="remove-from-cart" onClick={""}>
+              <button className="remove-from-cart" 
+              // onClick={""}
+              >
                 Save for Later
               </button>
               <br></br>

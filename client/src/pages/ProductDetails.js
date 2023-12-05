@@ -18,7 +18,7 @@ const ProductDetails = ({cartItems, setCartItems , loggedIn}) => {
           setErrors(errorData.errors);
         }
       } catch (error) {
-        console.error('Error fetching product:', error);
+
       }
     };
 
@@ -33,7 +33,7 @@ const ProductDetails = ({cartItems, setCartItems , loggedIn}) => {
 
   const handleAddToCart = async (product) => {
     product['quantity'] = '1';
-    console.log("clicked", product);
+ 
     
     const response = await fetch(`/cart_items`, {
       method: "POST",
@@ -46,21 +46,16 @@ const ProductDetails = ({cartItems, setCartItems , loggedIn}) => {
       const data = await response.json();
       
       setCartItems(() => [...cartItems, data]);
-      console.log("data", cartItems);
+ 
       // history.push("/cart");
     }
   }
   
-  console.log("items", cartItems);
-  console.log(cartItems.map((item) => item.sku === product.sku ? "In Cart" : null));
-
+ 
   return (
     <div className="product-detail">
       {product.products?.map((product) => {
         const isInCart = cartItems.filter((item) => parseInt(item.sku) === product.sku).length > 0;
-        console.log(cartItems.map((item) => parseInt(item.sku)));
-        console.log(isInCart);
-        
 
         return (
           <div key={product.sku} className="product-card">

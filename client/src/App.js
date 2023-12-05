@@ -19,7 +19,7 @@ function App() {
   const [userChecked, setUserChecked] = useState(false);
 
   const fetchCartItems = async (data) => {
-    console.log('fetchCartItems', data.id);
+    
     try {
       const response = await fetch(`/carts/${data.id}`); // Adjust the endpoint based on your API
 

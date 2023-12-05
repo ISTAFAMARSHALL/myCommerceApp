@@ -62,14 +62,11 @@ const ProductList = ({ cartItems, setCartItems , loggedIn}) => {
       }
     }
 
-    console.log('Cart items', cartItems.map((item) => item.sku));
     
   return (
     <div className="product-list">
       {products.products?.map((product) => {
         const isInCart = cartItems.filter((item) => parseInt(item.sku) === product.sku).length > 0;
-        console.log(cartItems.map((item) => parseInt(item.sku)));
-        console.log(isInCart);
         
 
         return (
