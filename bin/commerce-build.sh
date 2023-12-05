@@ -12,5 +12,9 @@ bundle exec rake db:drop
 bundle exec rake db:create
 
 # Add build commands for back end
-bundle exec rake db:migrate
+DISABLE_DATABASE_ENVIRONMENT_CHECK=1 rails db:migrate
+
+
+
+# bundle exec rake db:migrate
 bundle exec rake db:seed
