@@ -6,7 +6,7 @@ Welcome to MyCommerce, your premier e-commerce solution for creating robust and 
 
 ### Installation
 
-<!-- This project was created with rails and deployed using Render  -->
+This project was created with rails and deployed using Render https://mycommerce-app.onrender.com
 
 1. Clone the repository: git clone https://github.com/ISTAFAMARSHALL/myCommerceApp
 
