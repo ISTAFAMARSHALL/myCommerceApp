@@ -12,6 +12,7 @@ import NavBar from './components/NavBar';
 import Cart from './components/Cart';
 import OrderScreen from './components/OrderScreen';
 import Footer from './components/Footer';
+import MyOrders from './pages/MyOrders';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -40,6 +41,21 @@ function App() {
       const response = await fetch('/me');
       if (response.ok) {
         const data = await response.json();
+        console.log(data.orders[0].order_items)
+
+        // const orderItemsArray = data.order_items ? JSON.parse(data.order_items) : [];
+
+        // const orderItemsKeyValuePairs = orderItemsArray.map((orderItem) => {
+        //   const keyValuePairs = orderItem.split(',').map((pair) => {
+        //     const [key, value] = pair.split(':').map((str) => str.trim());
+        //     return { [key]: value };
+        //   });
+  
+        //   return keyValuePairs.reduce((acc, pair) => ({ ...acc, ...pair }), {});
+
+
+        // });
+
         setCurrentUser(data);
         setLoggedIn(true);
         fetchCartItems(data);
@@ -112,6 +128,7 @@ function App() {
           <Route path="/cart" render={() => <Cart setCartItems={setCartItems} cartItems={cartItems} />} />
           <Route path="/account" render={() => <Account setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
           <Route path="/order/:id" render={() => <OrderScreen setLoggedIn={setLoggedIn} loggedIn={loggedIn} />} />
+          <Route path="/myorders" render={() => <MyOrders/>} />
         </Switch>
       </div>
 

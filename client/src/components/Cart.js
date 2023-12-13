@@ -78,11 +78,7 @@ const Cart = ({cartItems, setCartItems}) => {
 
   const handleOrderSubmission = async () => {
     try {
-      console.log(currentUser.id,
-        cartItems.map((item) => ({
-          cart_items_id: item.id,
-          quantity: item.quantity,
-        })),);
+
       const response = await fetch(`/orders`, {
         method: 'POST',
         headers: {
@@ -138,13 +134,13 @@ const Cart = ({cartItems, setCartItems}) => {
                   onChange={(e) => handleUpdateQuantity(item, e.target.value)}
                 />
               </p>
-              <button className="remove-from-cart" 
+              {/* <button className="remove-from-cart" 
               // onClick={""}
               >
                 Save for Later
               </button>
               <br></br>
-              <br></br>
+              <br></br> */}
               <button className="remove-from-cart" onClick={() => handleDeleteFromCart(item)}>
                 Delete from Cart
               </button>

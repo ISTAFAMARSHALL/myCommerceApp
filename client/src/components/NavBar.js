@@ -66,7 +66,20 @@ function Navbar({ setLoggedIn, loggedIn , cartItems}) {
             <>View { cartItems.length === 0 ? "My Cart" : `${calculateTotalQuantity()} item${cartItems.length !== 0 || cartItems.length !== 1 ?  "s in Cart" : ""}`}
             
             </>
-        </NavLink> : <></>  }
+        </NavLink> : <></>}
+        
+        <br></br>
+        <br></br>
+
+        {currentUser.orders.length === undefined || 0 ? 
+          <></> 
+          : 
+          <NavLink className="button" exact to="/Myorders">
+            <>My Orders</>
+          </NavLink>
+
+        }
+        
 
         </div>
         {/* NavLink elements for Best Buy categories */}

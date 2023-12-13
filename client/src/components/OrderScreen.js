@@ -41,7 +41,7 @@ const OrderScreen = () => {
     fetchOrder();
   }, [id]);
 
-  console.log(order);
+  
 
   const orderTotal = () => {
     const total = order.reduce((acc, item) => acc + item.salePrice * item.quantity, 0);
