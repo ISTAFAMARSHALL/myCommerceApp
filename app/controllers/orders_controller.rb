@@ -171,7 +171,7 @@ class OrdersController < ApplicationController
 
       # Build an OrderItem association with the Order
       # order_items << OrderItem.new(cart_item: cart_item, quantity: item_params["quantity"])
-      order_items << "OrderItem id: #{cart_item.id}, name: #{cart_item.name}, salePrice: #{cart_item.salePrice}, sku: #{cart_item.sku}, cart_id: #{cart_item.cart_id}, quantity: #{cart_item.quantity}"
+      order_items << "OrderItem id: #{cart_item.id}, name: #{cart_item.name}, image: #{cart_item.image} , thumbnailImage: #{cart_item.thumbnailImage} , salePrice: #{cart_item.salePrice}, sku: #{cart_item.sku}, cart_id: #{cart_item.cart_id}, quantity: #{cart_item.quantity}"
 
       all << cart_item
     end
@@ -197,7 +197,7 @@ class OrdersController < ApplicationController
   end
 
   def to_s(str)
-    "OrderItem id: #{cart_item.id}, name: #{cart_item.name}, salePrice: #{cart_item.salePrice}, sku: #{cart_item.sku}, cart_id: #{cart_item.cart_id}, quantity: #{cart_item.quantity}"
+    "OrderItem id: #{cart_item.id}, name: #{cart_item.name}, salePrice: #{cart_item.salePrice}, sku: #{cart_item.sku}, cart_id: #{cart_item.cart_id}, quantity: #{cart_item.quantity} , image: #{cart_item.image} , thumbnailImage: #{cart_item.thumbnailImage}"
   end
 
 end

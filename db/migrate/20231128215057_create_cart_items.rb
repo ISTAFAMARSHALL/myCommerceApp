@@ -2,6 +2,7 @@ class CreateCartItems < ActiveRecord::Migration[7.0]
   def change
     create_table :cart_items do |t|
       t.string :image
+      t.string :thumbnailImage
       t.string :name
       t.string :salePrice
       t.string :sku

@@ -16,6 +16,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_215057) do
 
   create_table "cart_items", force: :cascade do |t|
     t.string "image"
+    t.string "thumbnailImage"
     t.string "name"
     t.string "salePrice"
     t.string "sku"

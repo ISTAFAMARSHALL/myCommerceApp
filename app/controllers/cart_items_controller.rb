@@ -37,7 +37,7 @@ class CartItemsController < ApplicationController
 
   def cart_params
       # puts params.inspect # Log received parameters for debugging
-      params.permit(:sku, :name, :salePrice, :image, :quantity, :cart_id)
+      params.permit(:sku, :name, :salePrice, :image, :thumbnailImage, :quantity, :cart_id)
   end
 
 end

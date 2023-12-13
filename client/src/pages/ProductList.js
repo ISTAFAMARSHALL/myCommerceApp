@@ -43,6 +43,7 @@ const ProductList = ({ cartItems, setCartItems , loggedIn}) => {
     }, []);
     
     const handleAddToCart = async (product) => {
+      
       product['quantity'] = '1';
       
       
