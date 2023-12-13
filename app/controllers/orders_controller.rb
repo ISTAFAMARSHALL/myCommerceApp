@@ -176,6 +176,8 @@ class OrdersController < ApplicationController
       all << cart_item
     end
 
+    @cart = Cart.find(user.id)
+    @cart.update(cart_items: [])
     
     # # Create an Order instance and associate insert order_items
     order = Order.create!(user_id: user.id, cart_id: user.id, order_items: order_items, total_amount: calculate_total_amount(all))

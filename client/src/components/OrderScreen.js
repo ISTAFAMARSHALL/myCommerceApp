@@ -68,6 +68,7 @@ const OrderScreen = () => {
               <p>Sale Price: ${item.salePrice}</p>
               <p></p>
             </li>
+            
           ))}
         </ul>
         <h2>Total ${orderTotal()}</h2>
