@@ -41,22 +41,26 @@ function App() {
       const response = await fetch('/me');
       if (response.ok) {
         const data = await response.json();
-        console.log(data.orders[0].order_items)
+        
 
-        // const orderItemsArray = data.order_items ? JSON.parse(data.order_items) : [];
+        const orderItemsArray = data.orders[0].order_items ? JSON.parse(data.orders[0].order_items) : [];
+        
 
-        // const orderItemsKeyValuePairs = orderItemsArray.map((orderItem) => {
-        //   const keyValuePairs = orderItem.split(',').map((pair) => {
-        //     const [key, value] = pair.split(':').map((str) => str.trim());
-        //     return { [key]: value };
-        //   });
+        const orderItemsKeyValuePairs = orderItemsArray.map((orderItem) => {
+          const keyValuePairs = orderItem.split(',').map((pair) => {
+            const [key, value] = pair.split(':').map((str) => str.trim());
+            return { [key]: value };
+          });
   
-        //   return keyValuePairs.reduce((acc, pair) => ({ ...acc, ...pair }), {});
+          return keyValuePairs.reduce((acc, pair) => ({ ...acc, ...pair }), {});
 
 
-        // });
+        });
 
-        setCurrentUser(data);
+        console.log(orderItemsKeyValuePairs );
+
+        const rebuiltUser = { ...data, orders: orderItemsKeyValuePairs };
+        setCurrentUser(rebuiltUser);
         setLoggedIn(true);
         fetchCartItems(data);
       }

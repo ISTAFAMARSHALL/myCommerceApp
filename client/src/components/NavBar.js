@@ -71,7 +71,7 @@ function Navbar({ setLoggedIn, loggedIn , cartItems}) {
         <br></br>
         <br></br>
 
-        {currentUser.orders.length === undefined || 0 ? 
+        {currentUser.orders === undefined ? 
           <></> 
           : 
           <NavLink className="button" exact to="/Myorders">

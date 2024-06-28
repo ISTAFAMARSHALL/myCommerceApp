@@ -149,7 +149,7 @@
 class OrdersController < ApplicationController  
   
   def index
-    orders = Order.all
+    orders = Order.all.where(user_id: @current_user.id)
     render json: orders, status: :ok
   end
 

@@ -16,8 +16,9 @@ const OrderScreen = () => {
         throw new Error('Error fetching order');
       }
 
+      
       const data = await response.json();
-
+      console.log('response:', data.order_items);
       // Check if data.order_items exists before parsing
       const orderItemsArray = data.order_items ? JSON.parse(data.order_items) : [];
 

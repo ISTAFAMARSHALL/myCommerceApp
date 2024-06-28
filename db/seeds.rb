@@ -22,22 +22,22 @@
 
     user.carts.create!
 
-    product1 = {sku: 1000006, name: 'Spy Kids: All the Time in the World [Includes Digital Copy] [Blu-ray] [2011]', salePrice: 14.99, image: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1000/1000006_sa.jpg', thumbnailImage: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1000/1000006_s.gif', quantity: '1'}
+    # product1 = {sku: 1000006, name: 'Spy Kids: All the Time in the World [Includes Digital Copy] [Blu-ray] [2011]', salePrice: 14.99, image: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1000/1000006_sa.jpg', thumbnailImage: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1000/1000006_s.gif', quantity: '1'}
 
-    user.carts.first.cart_items.create!(product1)
+    # user.carts.first.cart_items.create!(product1)
 
-    product2 = {sku: 1000007, name: 'The Smurfs [Includes Digital Copy] [Blu-ray] [2011]', salePrice: 14.99, image: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1000/1000007_sa.jpg', thumbnailImage: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1000/1000006_s.gif', quantity: '1'}
+    # product2 = {sku: 1000007, name: 'The Smurfs [Includes Digital Copy] [Blu-ray] [2011]', salePrice: 14.99, image: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1000/1000007_sa.jpg', thumbnailImage: 'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/1000/1000006_s.gif', quantity: '1'}
 
-    user.carts.first.cart_items.create!(product2)
+    # user.carts.first.cart_items.create!(product2)
 
-    items =  [product2 , product1 ]
+    # items =  [product2 , product1 ]
 
-    def calculate_total_amount(items)
-        # Implement your logic to calculate the total amount based on items
-        items.sum { |item| item[:salePrice].to_i * item[:quantity].to_i }
-    end
+    # def calculate_total_amount(items)
+    #     # Implement your logic to calculate the total amount based on items
+    #     items.sum { |item| item[:salePrice].to_i * item[:quantity].to_i }
+    # end
 
-    order = user.orders.create!(cart_id: user.id, order_items: items , total_amount: calculate_total_amount(items))
+    # order = user.orders.create!(cart_id: user.id, order_items: items , total_amount: calculate_total_amount(items))
 
 
 end
